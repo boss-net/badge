@@ -1,0 +1,191 @@
+<% cache locale do %>
+<div class="row">
+    <div class="col-md-8 col-sm-7">
+      <h2 class="best-practices-banner"><%=
+        t('static_pages.home.badge_program') %></h2>
+      <%= link_to t('static_pages.home.get_your_badge'),
+                    new_project_path,
+                    class:"btn btn-success btn-main-getbadge btn-main-margin" %>
+      <p class="no-padding best-practices-main-text">
+        <%= t('static_pages.home.p1_html') %>
+      </p>
+
+      <p class="no-padding best-practices-main-text">
+        <%= t('static_pages.home.p2_html') %>
+      </p>
+
+      <p class="no-padding best-practices-main-text">
+        <%= t('static_pages.home.p3_html') %>
+      </p>
+    </div><%# end of column with banner and main text %>
+    <div class="col-md-4 col-sm-5">
+      <div class="home-badge center-block"></div>
+    <div class="row">
+      <div class="col-sm-12">
+        <br><br>
+        <p id="LogosHeader"><%=
+          t('static_pages.home.projects_earned_badge') %></p>
+      </div>
+    </div>
+    <%
+       # We'll use this a lot on this page, so calculate it just once.
+       projects_dir = projects_path
+    %>
+    <div class="row">
+      <div class="col-xs-12">
+      <a href="<%= projects_dir %>/34" class="earner-logo">
+        <%= image_tag 'project-logos/linux.png', width: 37, height: 48,
+                      alt: 'Linux', title: 'Linux' %></a>
+      <a href="<%= projects_dir %>/569" class="earner-logo">
+        <%= image_tag 'project-logos/Kubernetes.png', width: 171, height: 48,
+                      alt: 'Kubernetes', title: 'Kubernetes' %></a>
+      <a href="<%= projects_dir %>/29" class="earner-logo">
+        <%= image_tag 'project-logos/Nodejs.png', width: 71, height: 48,
+                      alt: 'Node.js', title: 'Node.js' %></a>
+      <a href="<%= projects_dir %>/307" class="earner-logo">
+        <%= image_tag 'project-logos/LibreOffice.png', width: 196, height: 48,
+                      alt: 'LibreOffice', title: 'LibreOffice' %></a>
+      <a href="<%= projects_dir %>/63" class="earner-logo">
+        <%= image_tag 'project-logos/curl.png', width: 112, height: 48,
+                      alt: 'curl', title: 'curl' %></a>
+      <a href="<%= projects_dir %>/42" class="earner-logo">
+        <%= image_tag 'project-logos/GitLab.png', width: 39, height: 48,
+                      alt: 'GitLab', title: 'GitLab' %></a>
+      <a href="<%= projects_dir %>/486" class="earner-logo">
+        <%= image_tag 'project-logos/Prometheus.png', width: 41, height: 48,
+                      alt: 'Prometheus', title: 'Prometheus' %></a>
+      <a href="<%= projects_dir %>/112" class="earner-logo">
+        <%= image_tag 'project-logos/pkgsrc.png', width: 142, height: 48,
+                      alt: 'pkgsrc', title: 'pkgsrc' %></a>
+      <a href="<%= projects_dir %>/374" class="earner-logo">
+        <%= image_tag 'project-logos/Xen.png', width: 104, height: 48,
+                      alt: 'Xen', title: 'Xen' %></a>
+      <a href="<%= projects_dir %>/246" class="earner-logo">
+        <%= image_tag 'project-logos/OpenStack.png', width: 44, height: 48,
+                      alt: 'OpenStack', title: 'OpenStack' %></a>
+      <a href="<%= projects_dir %>/684" class="earner-logo">
+        <%= image_tag 'project-logos/NVM.png', width: 66, height: 48,
+                      alt: 'Node Version Manager (NVM)',
+                      title: 'Node Version Manager (NVM)' %></a>
+      <a href="<%= projects_dir %>/74" class="earner-logo">
+        <%= image_tag 'project-logos/Zephyr.png', width: 68, height: 48,
+                      alt: 'Zephyr', title: 'Zephyr' %></a>
+      <a href="<%= projects_dir %>/154" class="earner-logo">
+        <%= image_tag 'project-logos/Syncope.png', width: 139, height: 48,
+                      alt: 'Syncope', title: 'Syncope' %></a>
+      <a href="<%= projects_dir %>/152" class="earner-logo">
+        <%= image_tag 'project-logos/Libcloud.png', width: 44, height: 48,
+                      alt: 'Apache Libcloud', title: 'Apache Libcloud' %></a>
+      <a href="<%= projects_dir %>/54" class="earner-logo">
+        <%= image_tag 'project-logos/OpenSSL.png', width: 160, height: 48,
+                      alt: 'OpenSSL', title: 'OpenSSL' %></a>
+      <a href="<%= projects_dir %>/66" class="earner-logo">
+        <%= image_tag 'project-logos/BRL-CAD.png', width: 87, height: 48,
+                      alt: 'BRL-CAD', title: 'BRL-CAD' %></a>
+      <a href="<%= projects_dir %>/209" class="earner-logo">
+        <%= image_tag 'project-logos/Nextcloud.png', width: 62, height: 48,
+                      alt: 'Nextcloud', title: 'Nextcloud' %></a>
+      <a href="<%= projects_dir %>/197" class="earner-logo">
+        <%= image_tag 'project-logos/GnuPG.png', width: 104, height: 48,
+                      alt: 'GnuPG', title: 'GnuPG' %></a>
+      <a href="<%= projects_dir %>/24" class="earner-logo">
+        <%= image_tag 'project-logos/ZAP.png', width: 48, height: 48,
+                      alt: 'OWASP ZAP', title: 'OWASP ZAP' %></a>
+      <a href="<%= projects_dir %>/249" class="earner-logo">
+        <%= image_tag 'project-logos/gnu.png', width: 50, height: 48,
+                      alt: 'GNU Make', title: 'GNU Make' %><span
+            class="h4">GNU&nbsp;Make</span></a>
+      <a href="<%= projects_dir %>/1699" class="earner-logo">
+        <%= image_tag 'project-logos/apparmor-toxie.png', width: 47, height: 48,
+                      alt: 'AppArmor', title: 'AppArmor' %></a>
+      <a href="<%= projects_dir %>/286" class="earner-logo">
+        <%= image_tag 'project-logos/blender-plain.png', width: 173, height: 48,
+                      alt: 'Blender', title: 'Blender' %></a>
+      <a href="<%= projects_dir %>/330" class="earner-logo">
+        <%= image_tag 'project-logos/gnutls.png', width: 53, height: 48,
+                      alt: 'GnuTLS', title: 'GnuTLS' %></a>
+      <a href="<%= projects_dir %>/1351" class="earner-logo">
+        <%= image_tag 'project-logos/tuf.png', width: 48, height: 48,
+                      alt: 'The Update Framework (tuf)',
+                      title: 'The Update Framework (tuf)' %></a>
+      <a href="<%= projects_dir %>/164" class="earner-logo">
+        <%= image_tag 'project-logos/OPNFV.png', width: 198, height: 48,
+                      alt: 'OPNFV', title: 'OPNFV' %></a>
+      <a href="<%= projects_dir %>/955" class="earner-logo">
+        <%= image_tag 'project-logos/Hyperledger.svg',
+                      width: 240, height: 48, alt: 'Hyperledger',
+                      title: 'Hyperledger' %></a>
+      </div>
+    </div><%# end of logo row %>
+    </div><%# end of special column %>
+  </div><%# end of row with main text %>
+<div class="row"><%# begin row with sharing URLs %>
+  <div class="col-xs-12">
+      <p class="no-padding best-practices-main-text">
+        <%= t('static_pages.home.share_header_html') %>
+        <%
+          # See https://jonsuh.com/blog/social-share-links/#use-share-urls
+          # Make URLs for Twitter Reddit Facebook LinkedIn Google+
+          twitter_url = 'https://twitter.com/intent/tweet/?' +
+            {
+              text: t('static_pages.home.check_us_out'),
+              url: request.original_url
+            }.to_param.html_safe
+          reddit_url =
+            'https://www.reddit.com/submit/?' +
+            { url: request.original_url }.to_param.html_safe
+          facebook_url =
+            'https://www.facebook.com/sharer/sharer.php?' +
+            { u: request.original_url }.to_param.html_safe
+          linkedin_url =
+            'https://www.linkedin.com/shareArticle?' +
+            {
+              mini: true,
+              url: request.original_url,
+              title: t('static_pages.home.check_us_out'),
+              source: request.original_url,
+              summary: t('static_pages.home.check_us_out')
+            }.to_param.html_safe
+          hacker_news_url = 'https://news.ycombinator.com/submitlink?' +
+            {
+              t: t('static_pages.home.check_us_out'),
+              u: request.original_url
+            }.to_param.gsub('+', '%20').html_safe
+          mailto_url =
+            'mailto:?' +
+            {
+              subject: t('static_pages.home.check_us_out') + ' ' +
+                       request.original_url,
+              body: t('static_pages.home.check_us_out') + "\n" +
+                       request.original_url
+            }.to_param.gsub('+', '%20').html_safe
+        %>
+
+        <a href="<%= twitter_url %>" class="btn btn-lg btn-social-icon btn-twitter btn-main-margin"><i class="fa fa-twitter" aria-hidden="true"
+        title="<%= t('static_pages.home.twitter') %>"
+        alt="<%= t('static_pages.home.twitter') %>"></i></a>
+
+        <a href="<%= reddit_url %>" class="btn btn-lg btn-social-icon btn-reddit btn-main-margin"><i class="fa fa-reddit-alien" aria-hidden="true"
+        title="<%= t('static_pages.home.reddit') %>"
+        alt="<%= t('static_pages.home.reddit') %>"></i></a>
+
+        <a href="<%= facebook_url %>" class="btn btn-lg btn-social-icon btn-facebook btn-main-margin"><i class="fa fa-facebook" aria-hidden="true"
+        title="<%= t('static_pages.home.facebook') %>"
+        alt="<%= t('static_pages.home.facebook') %>"></i></a>
+
+        <a href="<%= linkedin_url %>" class="btn btn-lg btn-social-icon btn-linkedin btn-main-margin"><i class="fa fa-linkedin" aria-hidden="true"
+        title="<%= t('static_pages.home.linkedin') %>"
+        alt="<%= t('static_pages.home.linkedin') %>"></i></a>
+
+        <a href="<%= hacker_news_url %>" class="btn btn-primary btn-lg btn-main-margin">&nbsp;<i class="fa fa-hacker-news" aria-hidden="true"
+        title="<%= t('static_pages.home.hacker_news') %>"
+        alt="<%= t('static_pages.home.hacker_news') %>"></i>&nbsp;</a>
+
+        <a href="<%= mailto_url %>" class="btn btn-primary btn-lg btn-main-margin">&nbsp;<i class="fa fa-envelope" aria-hidden="true"
+        title="<%= t('static_pages.home.email') %>"
+        alt="<%= t('static_pages.home.email') %>"></i>&nbsp;</a>
+
+  </div>
+</div><%# end of "share this" row %>
+  <br>
+<% end %>

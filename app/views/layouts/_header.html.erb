@@ -1,0 +1,103 @@
+<header class='navbar navbar-fixed-top navbar-inverse nav-color'>
+  <div class='container container_padding'>
+    <nav>
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsingRightNav" aria-label="<%= t(:toggle_navigation, scope: :layouts) %>">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class='nav navbar-nav navbar-left'>
+        <%# don't use root_path, it generates ugly URLs %>
+        <%= link_to t(:cii_best_practices, scope: :layouts), "/#{I18n.locale}", id: 'logo' %>
+       </div>
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="collapsingRightNav">
+
+      <ul class='nav navbar-nav navbar-right'>
+        <li><%= yield :insert_progress_bar %></li>
+        <%= yield :nav_extras %>
+        <li><%= link_to Icon[:'fa-list'] + t(:projects, scope: :layouts), projects_path %></li>
+
+        <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=
+              Icon[:'fa-user']
+            %><%= t(:account, scope: :layouts) %><b class="caret"></b></a>
+            <ul class="dropdown-menu reverse-dropdown">
+              <li><%= link_to Icon[:'fa-address-card'] + t(:profile, scope: :layouts), current_user %></li>
+              <% if current_user.provider == 'local' %>
+                <li><%= link_to t(:settings, scope: :layouts), edit_user_path(current_user) %></li>
+              <% end %>
+              <li class="divider"></li>
+              <li>
+                <%= link_to t(:logout_html, scope: :layouts), logout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t(:signup_html, scope: :layouts), signup_path %></li>
+          <li><%= link_to t(:login_html, scope: :layouts), login_path %></li>
+        <% end %>
+        <% cache [I18n.locale, request.original_fullpath] do %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="fa fa-language fa-lg" title="<%= t(:choose_locale, scope: :layouts) %>"></span>
+              <b class="caret"></b></a>
+            <ul class="dropdown-menu reverse-dropdown">
+              <% I18n.available_locales.map do |loc| %>
+                <li><a href="<%=
+                  # TODO: This doesn't include the anchor.
+                  force_locale_url(request.original_url, loc)
+                  %>"><%= t("locale_name.#{loc}") %>
+                  <%=
+                    if loc != I18n.locale
+                      '/ ' + t("locale_name.#{loc}", locale: loc)
+                    end
+                  %>
+                  (<%= loc %>)</a>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+
+    </nav>
+  </div>
+</header>
+<% if in_development? %>
+  <div class="row">
+  <div class="alert alert-danger alert-dismissable text-center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="<%= t('projects.misc.close') %>">&times;</a>
+    <%= t('projects.misc.in_development_warning_html') %>
+  </div>
+  </div>
+<% end %>
+<% if ENV.has_key?('SYSTEM_ANNOUNCEMENT') %>
+  <%
+    # Show system announcement from environment variable if available.
+    # Use SYSTEM_ANNOUNCEMENT_<locale> if available, else SYSTEM_ANNOUNCEMENT
+    locale_key = "SYSTEM_ANNOUNCEMENT_#{I18n.locale}"
+    if ENV.has_key?(locale_key)
+      announcement = ENV[locale_key]
+    else
+      announcement = ENV['SYSTEM_ANNOUNCEMENT']
+    end
+    # Announcement is from the environment variable region, which is a
+    # trusted source.  Therefore, allow <b> etc.
+    announcement = announcement.html_safe
+  %>
+  <div class="row">
+  <div class="alert alert-danger alert-dismissable text-center">
+    <a href="#" class="close" data-dismiss="alert" aria-label="<%= t('projects.misc.close') %>">&times;</a>
+    <%= announcement %>
+  </div>
+  </div>
+<% end %>

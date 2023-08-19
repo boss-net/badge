@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= yield :special_head_values %>
+<%# The following are the same for a given locale, cache for speed -%>
+<% cache locale do # do not cache csrf_meta_tags -%>
+  <title>BadgeApp</title>
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application', defer: true %>
+  <link rel="preload" href="<%=
+    stylesheet_path('application') %>" as="stylesheet" type="text/css">
+  <link rel="preload" href="<%=
+    javascript_path('application') %>" as="script"
+    type="application/javascript">
+  <link rel="preload" href="<%=
+    font_path('fontawesome-webfont.woff2') %>" as="font"
+    type="font/woff2" crossorigin>
+  <link rel="preload" href="<%=
+    image_path('cci-logo-header.png') %>" as="image" type="image/png">
+  <link rel="alternate" type="application/atom+xml" title="<%= t('feed_title') %>" href="/<%= I18n.locale %>/feed" />
+  <link rel="publisher" href="https://plus.google.com/+LinuxfoundationOrg" />
+<% end # cache for this locale -%>
+<%# Provide info on all alternate locales for search engines, etc. See: -%>
+<%# https://support.google.com/webmasters/answer/189077?hl=en -%>
+<%# https://searchengineland.com/ -%>
+<%# the-ultimate-guide-to-multilingual-and-multiregional-seo-157838 -%>
+<%# We use original_fullpath so that query strings are included. -%>
+<%# Fullpaths and locales are always distinct, so don't need cache name -%>
+<% cache request.original_fullpath do -%>
+<%   I18n.available_locales.each do |loc| -%>
+       <link rel="alternate" hreflang="<%= loc %>" href="<%=
+             force_locale_url(request.original_url, loc) %>" />
+<%   end # each locale -%>
+       <link rel="alternate" hreflang="x-default" href="<%=
+             force_locale_url(request.original_url, nil) %>" />
+<% end # cache of links to "alternates" for each locale -%>
+</head>
+<body>
+<%= render 'layouts/header' -%>
+<% flash.each do |message_type, message| -%>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end -%>
+
+  <div class="container container_margins">
+  <%= yield -%>
+  </div>
+
+<%= render 'layouts/footer' -%>
+<%= debug(params) if Rails.env.development? -%>
+</body>
+</html>

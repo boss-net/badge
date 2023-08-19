@@ -15,3 +15,4 @@ MARKDOWN=markdown2.py $(MARKDOWNFLAGS)
 HTML_FILES = criteria.html background.html implementation.html other.html
 
 all: $(HTML_FILES)
+

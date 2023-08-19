@@ -1,0 +1,76 @@
+<table class="table table-bordered table-striped table-responsive">
+  <%# Can't cache, because user selection could invert them %>
+  <thead>
+    <tr>
+      <th><%= sortable_header t('.id'), 'id' %></th>
+      <th><%= sortable_header t('.name'), 'name' %></th>
+      <th><%= t '.description' %></th>
+      <th><%= sortable_header t('.website'), 'homepage_url' %></th>
+      <th><%= t '.license' %></th>
+      <th><%= t '.owner' %></th>
+      <th><%= sortable_header t('.last_achieved'), 'achieved_passing_at' %></th>
+      <th><%= sortable_header t('.pachieved'), 'tiered_percentage' %></th>
+      <th><%= t '.badge' %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% projects.each do |project| %>
+    <%# The badge URL has one value for some time after the project entry
+       is edited, and then changes. To handle that gracefully, we
+       expire the cache after a period of time. %>
+    <% cache [project, locale], expires_in: 12.hours do %>
+      <tr>
+        <td><%= link_to project.id, project %></td>
+        <td class="project_name"><%=
+          link_to(
+            word_breakdown(project.name.presence || t('.paren_name_unknown')),
+            project
+          ) %></td>
+        <td><span lang="en"><%= markdown(
+                  (project.description || '').
+                  truncate(160, separator: ' ')) %></span></td>
+        <td class='website'>
+          <%# Defend against bad data - link only if plausible URL. %>
+          <% if project.homepage_url.presence &&
+                project.homepage_url.match(/\Ahttps?:\/\//) %>
+            <a rel='nofollow ugc' href="<%= project.homepage_url %>"><%= word_breakdown(project.homepage_url) %></a>
+          <% else %>
+            <%= project.homepage_url %>
+          <% end %>
+          <% end %>
+        </td>
+        <td class='license'><%= project.license %></td>
+        <td><%= link_to project.user_display_name, user_path(project.user_id),
+                        rel: 'nofollow ugc' %></td>
+        <td><%= project.achieved_passing_at&.
+                  to_formatted_s(:db) %></td>
+        <td><span data-toggle="tooltip" data-placement="bottom" title="<%=
+                    tiered_percent_as_string(project.tiered_percentage)
+             %>"><%= project.tiered_percentage %>%</span></td>
+        <td><!-- DO NOT USE /badge_static in README files! --><%=
+                link_to("<img src='#{ project.badge_src_url }'
+                  alt='#{t('.badge_level', id: project.id,
+                            percent: project.tiered_percentage)}'>".html_safe,
+                  project) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%# Can't cache, because user selection could invert them %>
+<p>
+<%= t '.can_also_sort' %>
+<%=
+  # Create a list.
+  # The *only* user input used here is locale, which we validate, so
+  # it's secure to use html_safe here.
+  [
+    sortable_header(t('.repository_url'), 'repo_url'),
+    sortable_header(t('.create_time'), 'created_at'),
+    sortable_header(t('.update_time'), 'updated_at'),
+    sortable_header(t('.user_id'), 'user_id')
+  ].to_sentence.html_safe # to_sentence has built-in 18n support
+%>
+</p>

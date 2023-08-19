@@ -1,0 +1,1085 @@
+---
+es:
+  helpers:
+    select:
+      prompt: Por favor seleccione
+    submit:
+      create: Crear %{model}
+      update: Actualizar %{model}
+      submit: Guardar %{model}
+  hello: Hola Mundo
+  submit:
+  projects_count:
+    zero:
+    one:
+    few:
+    many:
+    other:
+  feed_title:
+  project_name_unknown:
+  locale_name:
+    en: Inglés
+    de: Alemán
+    fr: Francés
+    ja: Japonés
+    ru: Ruso
+    zh-CN: Chino (Simplificado)
+    es: Español
+    sw:
+    pt-BR:
+  layouts:
+    cii_best_practices: OpenSSF Best Practices
+    projects: Proyectos
+    users: Usuarios
+    account: Cuenta
+    profile: Perfil
+    settings: Ajustes
+    choose_locale: Elige la configuración regional
+    logout_html: >-
+      <span class="glyphicon glyphicon-log-out"></span> Cerrar
+      sesión
+    signup_html: <span class="glyphicon glyphicon-user"></span>
+      Registrarse
+    login_html: >-
+      <span class="glyphicon glyphicon-log-in"></span> Iniciar
+      sesión
+    footer_text_html:
+    toggle_navigation:
+  admin_only:
+  account_activations:
+    activated: "¡Cuenta activada!"
+    failed_activation: Enlace de activación inválido
+    delay:
+      zero:
+      one:
+      few:
+      other:
+  password_resets:
+    forgot_password:
+    reset_password:
+    password_confirmation:
+    password_empty:
+    password_reset:
+    instructions_sent:
+    reset_expired:
+    update_password:
+  sessions:
+    login_header:
+    login_with_github_html:
+    or:
+    email:
+    password:
+    forgot_password:
+    remember_me:
+    cookie_details_html:
+    login_custom:
+    no_custom:
+    already_logged_in:
+    incorrect_login_info:
+    invalid_combo:
+    signed_in:
+    not_activated:
+    signed_out:
+    no_login_time:
+    login_automatic_signup:
+    login_disabled:
+    cannot_login_yet:
+  static_pages:
+    home:
+      badge_program: Programa de OpenSSF Best Practices Badge
+      get_your_badge: "¡Obtenga su insignia ahora!"
+      check_us_out: "¡Mira el sitio web de OpenSSF Best Practices
+        Badge!"
+      p1_html: |2-
+         La insignia de Mejores Pr&aacute;cticas [Best Practices
+        badge] de la <a href="https://openssf.org/">Iniciativa de Infraestructura N&uacute;cleo [Open Source Security Foundation (OpenSSF)]</a> que es parte de la <a href="https://www.linuxfoundation.org/">Fundaci&oacute;n Linux [Linux Foundation (LF)]</a> constituye una de las maneras en la que proyectos de tipo Free/Libre y Open Source Software (FLOSS) pueden mostrar que est&aacute;n siguiendo las mejores pr&aacute;cticas de dicha comunidad. Los proyectos pueden auto-certificarse voluntaria y gratuitamente llenando el cuestionario que se ofrece en esta p&aacute;gina. Con dicho cuestionario los proyectos pueden explicar como est&aacute;n siendo creados de conformidad con las mejores pr&aacute;cticas. La insignia de Mejores Pr&aacute;cticas fue inspirada por las m&uacute;ltiples insignias que los proyectos en Github tienen a su disposici&oacute;n. Los consumidores de la insignia pueden evaluar r&aacute;pidamente cuales son los proyectos de FLOSS que est&aacute;n siguiendo las mejores pr&aacute;cticas y que por lo tanto tienen una mayor probabilidad de producir c&oacute;digo que es seguro y de alta calidad.
+      p2_html: >-
+        M&aacute;s informaci&oacute;n acerca del programa que
+        confiere la insignia de Mejores Pr&aacute;cticas, incluyendo
+        sus antecedentes y <a href='https://github.com/boss-net/badge/blob/master/doc/criteria.md'>criterios</a>
+        aplicables se puede encontrar en <a href='https://github.com/boss-net/badge'>GitHub</a>.
+        <a href="/es/project_stats">Las estad&iacute;sticas del
+        proyecto</a> y las <a href="/es/criteria_stats">estad&iacute;sticas
+        de los criterios</a> tambi&eacute;n están disponibles.
+        La <a href="/es/projects">página de proyectos</a> tiene
+        una lista de los proyectos que est&aacute;n participando
+        y ofrece la posibilidad de ejecutar b&uacute;squedas (por
+        ejemplo, usted puede ver <a href="/es/projects?gteq=100">proyectos
+        que tienen una insignia aprobada</a>). Usted tambi&eacute;n
+        puede ver<a href='/es/projects/1/0'> un ejemplo en donde
+        nosotros tratamos de obtener nuestra propia insignia</a>.
+      p3_html: >-
+        <em>Privacidad y cuestiones jur&iacute;dicas</em>: Inspeccione
+        por favor nuestras <a href="https://www.linuxfoundation.org/privacy">normas
+        acerca de privacidad</a>, <a href="/es/cookies"> de cookies</a>,
+        y <a href="https://www.linuxfoundation.org/terms">las
+        condiciones de uso</a>. El código del cuestionario para
+        solicitar la insignia está publicado bajo la licencia
+        de <a href="https://opensource.org/licenses/MIT">MIT</a>
+        (los proyectos que buscan obtener la insignia est&aacute;n
+        controlados por sus respectivas licencias). Todo contenido
+        que no es de tipo c&oacute;digo, que es publicamente disponible
+        y que es manejado por la aplicaci&oacute;n para la obtenci&oacute;n
+        de la insignia es publicado como m&iacute;nimo bajo la
+        licencia <a href="https://creativecommons.org/licenses/by/3.0/">Creative
+        Commons Attribution License versi&oacute;n 3.0 (CC-BY-3.0)</a>;
+        el contenido m&aacute;s reciente que no es de tipo c&oacute;digo
+        es publicado bajo la licencia CC-BY versi&oacute;n 3.0
+        o versi&oacute;n posterior (CC-BY-3.0+). Si la informaci&oacute;n
+        en esta p&aacute;gina se cita colectivamente o sin anotaci&oacute;n
+        de otro tipo, se pide que se le d&eacute; el debido cr&eacute;dito
+        a los que han contribuido a la creaci&oacute;n de la insignia
+        OpenSSF de Mejores Pr&aacute;cticas.
+      share_header_html: "<p> Comparta esto: </p>"
+      twitter: Twitter
+      reddit: Reddit
+      facebook: Facebook
+      linkedin: LinkedIn
+      hacker_news: Hacker News
+      email: Correo electrónico
+      projects_earned_badge: 'Algunos ganadores de insignias:'
+    cookies:
+      cookies_header:
+      cookies_info_html:
+    error_404:
+      heading:
+      no_such_page:
+      please_home:
+    criteria_stats:
+      criteria:
+      level:
+      must:
+      should:
+      suggested:
+      total_active:
+      allow_na:
+      met_justification_required:
+      require_url:
+      met_justification_or_url_required:
+      details:
+      new_this_level:
+      future:
+      project_stats_html:
+      see_actual_criteria:
+    error_409:
+      heading:
+      conflict:
+  users:
+    new:
+      signup_header:
+      intro_github:
+      intro_html:
+      name:
+      email:
+      preferred_locale: Configuración regional preferente
+      password:
+      password_confirmation:
+      create_account:
+    edit:
+      update_user_info:
+      save_changes:
+      inadequate_privileges:
+    update:
+      profile_updated:
+    show:
+      edit_user:
+      projects_owned:
+      projects_additional_rights:
+      other_projects_edit:
+      see_external:
+      is_admin:
+      as_admin:
+      send_email_to:
+      delete_link_name:
+      confirm_delete:
+      json_link:
+      in_json_format:
+      local_account:
+    destroy:
+      cannot_delete_user_with_projects:
+      cannot_delete_self:
+      user_deleted:
+    redirect_existing:
+    new_activation_link_created:
+    please_log_in:
+  project_stats:
+    index:
+      project_stats_header:
+      all_projects:
+      projects_nontrivial:
+      projects_activity_30:
+      projects_silver:
+      projects_gold:
+      projects_completed_silver_and_gold:
+      percent_projects_earning_badges:
+      daily_activity:
+      reminders:
+      active_projects:
+      active_in_progress:
+      active_edited:
+      active_edited_in_progress:
+      projects_created_since_yesterday:
+      projects_updated_since_yesterday:
+      projects_created_average_7_days:
+      projects_updated_average_7_days:
+      projects_created_updated_daily:
+      reminders_sent_since_yesterday:
+      reactivated_projects:
+      admin_html:
+      raw_data:
+      json_format:
+      csv_format:
+      users:
+      github_users:
+      local_users:
+      users_created_since_yesterday:
+      users_updated_since_yesterday:
+      users_with_projects:
+      users_without_projects:
+      users_with_multiple_projects:
+      users_with_passing_projects:
+      users_with_silver_projects:
+      users_with_gold_projects:
+      user_statistics:
+  projects:
+    index:
+      all:
+      passing_100:
+      in_progress_variable:
+      add_link:
+      add_new:
+      badge_status:
+      exclude_passing:
+      text_search:
+      name_or_description:
+      search:
+      silver_in_progress_variable:
+      silver_200:
+      gold_in_progress_variable:
+      gold_300:
+      in_progress_next:
+      passing_next:
+      silver_next:
+    table:
+      id:
+      name:
+      description:
+      website:
+      license:
+      owner:
+      last_achieved:
+      pachieved:
+      can_also_sort:
+      repository_url:
+      create_time:
+      update_time:
+      user_id:
+      paren_name_unknown:
+      badge_level:
+      badge:
+    new:
+      thanks_adding:
+      post_delay_warning:
+      new_badge:
+      may_select_html:
+      new_badge_or:
+      select_one_github:
+      submit_github:
+      project_already_exists:
+      url_of_homepage:
+      placeholder_of_homepage:
+      url_of_repo:
+      placeholder_of_repo:
+      submit_urls:
+      final_text_html:
+      sign_in_first:
+      original_repos:
+      fork_repos:
+      tell_us:
+    delete_form:
+      info_html:
+      rationale_placeholder:
+      delete_action:
+      too_short:
+      more_non_whitespace:
+    edit:
+      edit_status:
+      repo_url_limits:
+      changed_since_html:
+      successfully_updated:
+      congrats_new:
+      lost_badge:
+      static_analysis_updated_html:
+      save_and_continue:
+      submit_and_exit:
+      submit_cc_by_3plus_html:
+    show:
+      edit:
+      delete:
+      confirm_delete:
+      back:
+      owned_by:
+      created_at_html:
+      updated_at_html:
+      last_lost_html:
+      last_achieved_html:
+      cc_by_3plus_html:
+      cc_by_3only_html:
+    form_early:
+      badge_intro:
+        description:
+        details_html: >-
+          No existe un conjunto de prácticas que pueda garantizar
+          que el software nunca tendrá defectos o vulnerabilidades;
+          incluso los métodos formales pueden fallar si las especificaciones
+          o suposiciones son incorrectas. Tampoco existe ningún
+          conjunto de prácticas que pueda garantizar que un proyecto
+          mantenga una comunidad de desarrollo saludable y que
+          funcione bien. Sin embargo, seguir las mejores prácticas
+          puede ayudar a mejorar los resultados de los proyectos.
+          Por ejemplo, algunas prácticas permiten la revisión
+          por parte de múltiples personas antes del lanzamiento,
+          lo que puede ayudar a encontrar vulnerabilidades técnicas
+          que de otro modo serían difíciles de encontrar y ayudar
+          a generar confianza y un deseo repetido de interacción
+          entre desarrolladores de diferentes compañías. Para
+          obtener una insignia, se deben cumplir todos los criterios
+          DEBE y NO DEBE, se deben cumplir, así como todos los
+          criterios DEBERÍAN deben cumplirse o ser justificados,
+          <em>y</em> todos los criterios SUGERIDOS se pueden cumplir
+          o incumplir (queremos que se consideren al menos). Si
+          desea añadir texto como justificación mediante un comentario
+          genérico, en lugar de ser un razonamiento de que la
+          situación es aceptable, comience el bloque de texto
+          con '//' seguido de un espacio. Los comentarios son
+          bienvenidos a través del <a href="https://github.com/boss-net/badge">sitio
+          de GitHub mediante "issues" o "pull requests"</a>. También
+          hay una <a href="https://lists.boss-net.org/mailman/listinfo/cii-badges">lista
+          de correo electrónico para el tema principal</a>.<br/><br/>Con
+          mucho gusto proporcionaríamos la información en varios
+          idiomas, sin embargo, si hay algún conflicto o inconsistencia
+          entre las traducciones, la versión en inglés es la versión
+          autorizada.
+      level:
+        '0':
+        0_html:
+        '1':
+        1_html:
+        '2':
+        2_html:
+      got_badge:
+        description_1:
+        badge_alt:
+        description_2:
+        details_html:
+        editing_description_html:
+    form_basics:
+      project_name:
+        description:
+        details:
+        placeholder:
+      description:
+        description:
+        details:
+        placeholder:
+      homepage_url:
+        description:
+        placeholder:
+      repo_url:
+        description:
+        placeholder:
+      implementation_languages:
+        description:
+        details:
+        placeholder:
+      additional_rights_changes:
+        description:
+        details_html:
+        placeholder:
+      cpe:
+        description_html:
+        details_html:
+        placeholder:
+      license:
+        description_html:
+        details_html:
+        placeholder:
+        title:
+    misc:
+      in_javascript:
+        collapse_all_title:
+        collapse_all:
+        expand_all_title:
+        expand_all:
+        show_details:
+        hide_details:
+        show_all_details:
+        hide_all_details:
+        show_met_title:
+        show_met_html:
+        hide_met_title:
+        hide_met_html:
+        passing_alt:
+        barely_alt:
+        failing_alt:
+        unknown_alt:
+        met_url_placeholder:
+        met_justification_placeholder:
+        met_placeholder:
+        unmet_placeholder:
+        na_justification_placeholder:
+        na_placeholder:
+        unknown_placeholder:
+      disabled_reminders:
+      general_comments:
+        description:
+        placeholder:
+      some_not_crypto_html:
+      dont_use_crypto:
+      future_header_html:
+      toggle_details_title:
+      details:
+      url_required:
+      future_criterion:
+      url_required_warning:
+      justification_required_warning:
+      in_development_warning_html:
+      close:
+    delete:
+      done:
+  report_mailer:
+    subject_achieved_passing:
+    subject_no_longer_passing:
+    subject_new_project:
+    subject_reminder:
+    subject_project_deleted:
+    new_project_heading:
+    new_project_part1:
+    new_project_part2:
+    new_project_part3_html:
+    new_project_part3_text:
+    reminder_body_html:
+    reminder_body_text:
+    gained_level_part1:
+    gained_level_part2:
+    gained_level_part3:
+    in_markdown_add:
+    in_html_add:
+    lost_level_message:
+    ending:
+  user_mailer:
+    account_activation:
+      before_html:
+      before_text:
+      activate:
+      subject:
+    github_welcome:
+      before_html:
+      before_text:
+      subject:
+    user_update:
+      before_text:
+      username_changed:
+      email_changed:
+      password_changed:
+      locale_changed: La configuración regional ha cambiado.
+      current_state:
+      after_text:
+      subject:
+    password_reset:
+      before_html:
+      before_text:
+      after_html:
+      after_text:
+      subject:
+      reset_password:
+  criteria:
+    '0':
+      description_good:
+        description:
+        details:
+        met_placeholder:
+      interact:
+        description:
+        met_placeholder:
+      contribution:
+        description: >-
+          La información sobre cómo contribuir DEBE explicar el
+          proceso de contribución (por ejemplo, ¿se utilizan "pull
+          requests" en el proyecto?)
+        details: >-
+          Se asume que los proyectos <a href="https://guides.github.com/activities/contributing-to-open-source/">
+          en GitHub usan "incidencias" y "pull requests"</a> a
+          menos que se indique lo contrario. Esta información
+          puede ser breve, por ejemplo, indicando que el proyecto
+          utiliza "pull requests", un gestor de incidencias o
+          publicaciones en una lista de correo (Indíquese cuál)
+        met_placeholder: "(URL requerida) ¿Cuál es el proceso?
+          ¿Qué URL lo explica?"
+      contribution_requirements:
+        description:
+        unmet_placeholder: >-
+          ¿Por qué los requisitos son tan obvios que esta información
+          no es necesaria?
+      floss_license:
+        description:
+        details:
+      floss_license_osi:
+        description:
+        details:
+      license_location:
+        description:
+        details:
+      documentation_basics:
+        description:
+        details:
+        met_placeholder:
+      documentation_interface:
+        description:
+        details:
+      sites_https:
+        description:
+        details:
+      discussion:
+        description:
+        details:
+      english:
+        description:
+        details:
+      repo_public:
+        description: >-
+          El proyecto DEBE tener un repositorio público para el
+          control de versiones de código fuente que sea legible
+          públicamente y tenga URL.
+        details: >-
+          La URL PUEDE ser la misma que la URL del proyecto. El
+          proyecto PUEDE utilizar ramas privadas (no públicas)
+          en casos específicos, mientras que el cambio no se divulga
+          públicamente (por ejemplo, para corregir una vulnerabilidad
+          antes de que se revele al público).
+      repo_track:
+        description: >-
+          El repositorio fuente del proyecto DEBE rastrear qué
+          cambios se realizaron, quién realizó los cambios y cuándo
+          se realizaron los cambios.
+      repo_interim:
+        description:
+        details:
+      repo_distributed:
+        description:
+        details: >-
+          Git no se requiere específicamente y los proyectos pueden
+          usar un software de control de versiones centralizado
+          (como subversion) con justificación.
+      version_unique:
+        description:
+        details:
+      version_semver:
+        description:
+        details:
+      version_tags:
+        description:
+      release_notes:
+        description:
+        details:
+      release_notes_vulns:
+        description:
+        details:
+      report_process:
+        description:
+      report_tracker:
+        description:
+        unmet_placeholder:
+      report_responses:
+        description:
+      enhancement_responses:
+        description:
+        details:
+      report_archive:
+        description: >-
+          El proyecto DEBE tener un archivo públicamente disponible
+          para informes y respuestas para búsquedas posteriores.
+      vulnerability_report_process:
+        description:
+        details:
+      vulnerability_report_private:
+        description:
+        details: >-
+          Los ejemplos incluyen un informe privado de defectos
+          enviado en la web usando HTTPS (TLS) o un correo electrónico
+          cifrado utilizando OpenPGP. Si los informes de vulnerabilidades
+          son siempre públicos (por lo que nunca hay informes
+          de vulnerabilidades privados), seleccione "no aplicable"
+          (N/A).
+      vulnerability_report_response:
+        description:
+        details:
+      build:
+        description: >-
+          Si el software generado por el proyecto requiere ser
+          construido para su uso, el proyecto DEBE proporcionar
+          un sistema de compilación que pueda satisfactoriamente
+          reconstruir automáticamente el software a partir del
+          código fuente.
+        details:
+      build_common_tools:
+        description: >-
+          Se SUGIERE que se utilicen herramientas comunes para
+          construir el software.
+        details: 'Por ejemplo: Maven, Ant, cmake, autotools, make
+          o rake.'
+      build_floss_tools:
+        description: >-
+          El proyecto DEBERÍA ser construible usando solo herramientas
+          FLOSS.
+      test:
+        description:
+        details:
+      test_invocation:
+        description: >-
+          Un conjunto de pruebas DEBERÍA ser invocable de forma
+          estándar para ese lenguaje.
+        details: 'Ejemplos: "make check", "mvn test" o "rake test".'
+      test_most:
+        description:
+      test_continuous_integration:
+        description:
+      test_policy:
+        description:
+        details:
+      tests_are_added:
+        description:
+        details:
+      tests_documented_added:
+        description:
+        details:
+      warnings:
+        description:
+        details:
+      warnings_fixed:
+        description: El proyecto DEBE abordar las advertencias.
+        details:
+      warnings_strict:
+        description:
+        details:
+      know_secure_design:
+        description:
+        details:
+      know_common_errors:
+        description:
+        details:
+      crypto_published:
+        description:
+        details:
+      crypto_call:
+        description: >-
+          Si el software producido por el proyecto es una aplicación
+          o una librería, y su propósito principal no es implementar
+          criptografía, entonces DEBE SOLAMENTE invocar un software
+          específicamente diseñado para implementar funciones
+          criptográficas; NO DEBERÍA volver a implementar el suyo.
+      crypto_floss:
+        description:
+        details:
+      crypto_keylength:
+        description:
+        details:
+      crypto_working:
+        description:
+        details:
+      crypto_weaknesses:
+        description:
+        details:
+      crypto_pfs:
+        description:
+      crypto_password_storage:
+        description:
+        details:
+      crypto_random:
+        description:
+        details:
+      delivery_mitm:
+        description:
+        details:
+      delivery_unsigned:
+        description:
+        details: Estos "hash" se pueden modificar en tránsito.
+      vulnerabilities_fixed_60_days:
+        description:
+        details:
+      vulnerabilities_critical_fixed:
+        description:
+      no_leaked_credentials:
+        description:
+        details:
+      static_analysis:
+        description:
+        details:
+        na_placeholder: >-
+          ¿Por qué no se puede cumplir esto (por ejemplo: no existen
+          herramientas FLOSS para ese idioma)?
+        met_placeholder: "¿Qué herramienta(s) de análisis estático
+          se utilizan?"
+      static_analysis_common_vulnerabilities:
+        description:
+        details:
+      static_analysis_fixed:
+        description:
+        details:
+      static_analysis_often:
+        description:
+      dynamic_analysis:
+        description:
+        details:
+      dynamic_analysis_unsafe:
+        description:
+        details:
+      dynamic_analysis_enable_assertions:
+        description:
+        details:
+      dynamic_analysis_fixed:
+        description:
+        details:
+      maintained:
+        description:
+        details:
+    '1':
+      achieve_passing:
+        description:
+      contribution_requirements:
+        description:
+      dco:
+        description:
+        details:
+      governance:
+        description:
+        details:
+      code_of_conduct:
+        description:
+        details:
+      roles_responsibilities:
+        description:
+        details:
+      access_continuity:
+        description:
+      bus_factor:
+        description:
+        details:
+      documentation_roadmap:
+        description:
+        details:
+      documentation_architecture:
+        description:
+        details:
+      documentation_security:
+        description:
+        details:
+      documentation_quick_start:
+        description:
+        details:
+      assurance_case:
+        description:
+        details:
+      documentation_current:
+        description:
+        details:
+      documentation_achievements:
+        description:
+        details:
+      accessibility_best_practices:
+        description:
+        details:
+      internationalization:
+        description:
+        details:
+      sites_password_security:
+        description:
+        details:
+      maintenance_or_update:
+        description:
+      report_tracker:
+        description:
+      vulnerability_report_credit:
+        description:
+      vulnerability_response_process:
+        description:
+        details:
+      coding_standards:
+        description:
+        details:
+      coding_standards_enforced:
+        description:
+        details:
+      build_standard_variables:
+        description:
+        details:
+      build_preserve_debug:
+        description:
+        details:
+      build_non_recursive:
+        description:
+        details:
+      build_repeatable:
+        description:
+        details:
+      installation_common:
+        description:
+        details:
+      installation_standard_variables:
+        description:
+      installation_development_quick:
+        description:
+        details:
+      external_dependencies:
+        description:
+        details:
+      dependency_monitoring:
+        description:
+        details:
+      updateable_reused_components:
+        description:
+        details:
+      interfaces_current:
+        description:
+      automated_integration_testing:
+        description:
+        details:
+      regression_tests_added50:
+        description:
+      test_statement_coverage80:
+        description:
+        details:
+      test_policy_mandated:
+        description:
+      tests_documented_added:
+        description:
+      warnings_strict:
+        description:
+      implement_secure_design:
+        description:
+        details:
+      crypto_weaknesses:
+        description:
+      crypto_algorithm_agility:
+        description:
+      crypto_credential_agility:
+        description:
+      crypto_used_network:
+        description:
+      crypto_tls12:
+        description:
+      crypto_certificate_verification:
+        description:
+        details:
+      crypto_verification_private:
+        description:
+      signed_releases:
+        description:
+        details:
+      version_tags_signed:
+        description:
+      input_validation:
+        description:
+        details:
+      hardening:
+        description:
+        details:
+      static_analysis_common_vulnerabilities:
+        description:
+      dynamic_analysis_unsafe:
+        description:
+    '2':
+      achieve_silver:
+        description: El proyecto DEBE lograr una insignia de nivel
+          plata.
+      bus_factor:
+        description:
+      contributors_unassociated:
+        description:
+        details:
+      copyright_per_file:
+        description:
+        details:
+      license_per_file:
+        description:
+        details:
+      repo_distributed:
+        description:
+      small_tasks:
+        description:
+        details:
+      require_2FA:
+        description:
+      secure_2FA:
+        description:
+        details:
+      code_review_standards:
+        description:
+        details:
+      two_person_review:
+        description:
+      build_reproducible:
+        description:
+        details:
+      test_invocation:
+        description:
+      test_continuous_integration:
+        description:
+        details:
+      test_statement_coverage90:
+        description:
+      test_branch_coverage80:
+        description:
+      crypto_used_network:
+        description:
+      crypto_tls12:
+        description:
+      hardened_site:
+        description:
+        details:
+      security_review:
+        description:
+        details:
+      hardening:
+        description:
+      dynamic_analysis:
+        description:
+      dynamic_analysis_enable_assertions:
+        description:
+  headings:
+    Accessibility and internationalization:
+    Analysis:
+    Automated test suite:
+    Identification:
+    Prerequisites: Prerrequisitos
+    Basic project website content:
+    Basics:
+    Bug-reporting process:
+    Change Control:
+    Coding standards:
+    Documentation:
+    Dynamic code analysis:
+    Externally-maintained components:
+    FLOSS license:
+    Future:
+    future:
+    Installation system:
+    New functionality testing:
+    Other:
+    Other security issues: Otros problemas de seguridad
+    Previous versions: Versiones anteriores
+    Project oversight: Supervisión del proyecto
+    Public version-controlled source repository: >-
+      Repositorio público para el control de versiones de código
+      fuente
+    Publicly known vulnerabilities fixed: Vulnerabilidades públicamente
+      conocidas corregidas
+    Quality: Calidad
+    Release notes: Notas de lanzamiento
+    Reporting: Informes
+    Secure development knowledge: Conocimiento de desarrollo seguro
+    Secure release:
+    Secured delivery against man-in-the-middle (MITM) attacks: >-
+      Entrega garantizada contra ataques de hombre en el medio
+      (MITM)
+    Security: Seguridad
+    Static code analysis: Análisis estático de código
+    Unique version numbering: Numeración única de versión
+    Use basic good cryptographic practices: Use buenas prácticas
+      criptográficas
+    Vulnerability report process: Proceso de informe de vulnerabilidad
+    Warning flags: Banderas de advertencia
+    Working build system:
+  criterion_status:
+    Met:
+    Unmet:
+    NA:
+  error_messages:
+    need_home_page_or_url:
+    form_contains:
+      one: El formulario contiene 1 error.
+      few:
+      many:
+      other: El formulario contiene %{count} errores.
+    not_an_email:
+    known_bad_password:
+    valid_text:
+    url_message:
+  last_entry:
+  criteria_overall:
+    beginning_header_all:
+    beginning_header_0:
+    beginning_header_1:
+    beginning_header_2:
+    beginning_all_html:
+    beginning_0_html:
+    beginning_1_html:
+    beginning_2_html:
+    see_discussion_html:
+    future:
+    na_allowed:
+    na_justification_required:
+    met_justification_required:
+    met_url_required:
+  criteria_discussion:
+    intro_p01_html:
+    intro_p02_html:
+    intro_p03_html:
+    intro_p04_html:
+    intro_p05_html:
+    intro_p06_html:
+    intro_p07_html:
+    intro_p08_html:
+    structure_p01_html:
+    structure_p02_html:
+    structure_p03_html:
+    other_p01_html:
+    other_p02_html:
+    automation_p01_html:
+    automation_p02_html:
+    automation_p03_html:
+    automation_p04_html:
+    changes_p01_html:
+    changes_p02_html:
+    changes_p03_html:
+    keywords_p01_html:
+    keywords_p02_html:
+    keywords_p03_html:
+    keywords_p04_html:
+    keywords_p05_html:
+    keywords_p06_html:
+    keywords_p07_html:
+    achieving_p01_html:
+    achieving_p02_html:
+    achieving_p03_html:
+    achieving_p04_html:
+    achieving_p05_html:
+    achieving_p06_html:
+    terminology_p01_html:
+    terminology_p02_html:
+    terminology_p03_html:
+    terminology_p04_html:
+    terminology_p05_html:
+    terminology_p06_html:
+    terminology_p07_html:
+    terminology_p08_html:
+    terminology_p09_html:
+    terminology_p10_html:
+    noncriteria_p01_html:
+    noncriteria_p02_html:
+    noncriteria_p03_html:
+    noncriteria_p04_html:
+    noncriteria_p05_html:
+    noncriteria_p06_html:
+    noncriteria_p07_html:
+    noncriteria_p08_html:
+    noncriteria_p09_html:
+    identify_p01_html:
+    identify_p02_html:
+    criteria_why_p01_html:
+    criteria_why_p02_html:
+    criteria_why_p03_html:
+    criteria_why_p04_html:
+    criteria_why_p05_html:
+    self_certification_p01_html:
+    self_certification_p02_html:

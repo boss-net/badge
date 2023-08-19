@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+# Copyright 2015-2017, the Linux Foundation, IDA, and the
+# OpenSSF Best Practices badge contributors
+# SPDX-License-Identifier: MIT
+
+# This precomputes the text for each icon as safe_html.
+# This is a singleton class.  It's complicated enough that
+# it's useful to put in its own class.
+
 class Icon
   class << self
     ICONS_TO_GENERATE = %i[

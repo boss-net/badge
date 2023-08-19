@@ -1,0 +1,137 @@
+<%
+ status_symbol = (criterion.to_s + '_status').to_sym
+ project_criterion_status = project[status_symbol]
+ criterion_result = project.get_criterion_result(criterion)
+
+ cache ['buttons', criterion.to_s, criteria_level, criterion_result,
+        is_disabled, locale, project_criterion_status ] do
+   passing_class = if (criterion_result == :criterion_passing && is_disabled)
+                     ' criterion-passing'
+                   else
+                     ''
+                   end
+%>
+  <div id="<%= criterion.to_s %>" class="row criterion-data<%= passing_class %>">
+    <% is_crypto = criterion.to_s.match(/^crypto_/)
+       crypto_class = is_crypto ? ' criterion-is-crypto' : '' %>
+
+    <div class="col-md-3 col-sm-4 col-xs-4 criteria-radio<%= crypto_class %>">
+      <div class="status-chooser">
+      <%= f.form_group status_symbol do %>
+        <%= link_to({ anchor: criterion.to_s }) do %>
+        <%#
+                       !!!!!  IMPORTANT  !!!!!
+          The functionality below is mirrored in assets/project-form.js
+          in the function "resetCriterionResult".  If you change the code
+          below, change "resetCriterionResult" accordingly.
+                       !!!!!!!!!!!!!!!!!!!!!!!
+        %>
+        <div class="col-xs-4 text-left block-left"><br>
+          <% if criterion_result == :criterion_passing %>
+            <%= image_tag(
+                  'result_symbol_check.png', size: '40x40',
+                    id: criterion.to_s + '_enough',
+                    alt: t('projects.misc.in_javascript.passing_alt')
+                ) %>
+          <% elsif criterion_result == :criterion_barely %>
+            <%= image_tag(
+                  'result_symbol_dash.png', size: '40x40',
+                    id: criterion.to_s + '_enough',
+                    alt: t('projects.misc.in_javascript.barely_alt')
+                ) %>
+          <% elsif criterion_result == :criterion_failing %>
+            <%= image_tag(
+                  'result_symbol_x.png', size: '40x40',
+                    id: criterion.to_s + '_enough',
+                    alt: t('projects.misc.in_javascript.failing_alt')
+                ) %>
+          <% else %>
+            <%= image_tag(
+                  'result_symbol_question.png', size: '40x40',
+                    id: criterion.to_s + '_enough',
+                    alt: t('projects.misc.in_javascript.unknown_alt')
+                ) %>
+          <% end %>
+        <%#            !!!!!!!!!!!!!!!!!!!!!!!            %>
+        <% end %>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2 col-sm-offset-1 text-left block-left">
+          <fieldset>
+          <legend class="hidden"><%= "Criterion [#{criterion}]" %></legend>
+          <%= f.radio_button status_symbol, 'Met', label: t('criterion_status.Met'),
+                                                   disabled: is_disabled %>
+          <%= f.radio_button status_symbol, 'Unmet', label: t('criterion_status.Unmet'),
+                                                     disabled: is_disabled  %>
+          <% if criterion.na_allowed? %>
+            <%= f.radio_button status_symbol, 'N/A', label: t('criterion_status.NA'),
+                                                     disabled: is_disabled  %>
+          <% end %>
+          <% unless criterion.minor == 'Prerequisites' %>
+            <%= f.radio_button status_symbol, '?', label: '?',
+                                                   disabled: is_disabled  %>
+          <% end %>
+          </fieldset>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end # cache 'buttons' %>
+  <div class='col-md-9 col-sm-8 col-xs-12 criteria-desc'>
+    <% cache ['desc', criterion.to_s, criteria_level, locale ] do
+       # Here we provide the description, details, and markings like
+       # "met_url_required?".  We cache this separately.
+       # Its cache needs fewer keys, so by caching this separately it
+       # can be shared across more projects. %>
+      <br>
+      <%= if criterion.future?
+           '(' + t('projects.misc.future_criterion') + ')'
+         else
+            ''
+         end %>
+      <%= criterion.description %>
+      <%= if criterion.met_url_required?
+            '(' + t('projects.misc.url_required') + ')'
+          else
+            ''
+         end %>
+      <sup>[<%= criterion %>]</sup>
+      <%= if criterion.details
+            render(partial: "details",
+              locals: {f: f, criterion: criterion,
+                       details: criterion.details.html_safe})
+          end %>
+    <% end # cache 'desc' %>
+
+    </div><%# end of existing column %>
+    <div class="col-xs-12"><%# new section for justification and rule %>
+
+    <% justification_symbol = (criterion.to_s + '_justification').to_sym
+       if (is_disabled)
+         project_criterion_justification = project[justification_symbol]
+         if project_criterion_justification&.presence
+           cache ['markdown', project.id, criterion.to_s,
+                  project.lock_version] do %>
+          <div class="justification-markdown" lang="en">
+            <%= markdown(project_criterion_justification) %>
+          </div>
+        <% end # cache 'markdown'
+         end # if..presence
+         if criterion_result == :criterion_url_required %>
+           <p class="bg-warning"><%= t('projects.misc.url_required_warning') %></p>
+         <% elsif criterion_result == :criterion_justification_required %>
+          <p class="bg-warning"><%= t('projects.misc.justification_required_warning') %></p>
+         <% end # criterion_result %>
+    <% else %>
+      <%= f.text_area justification_symbol,
+                      class: 'justification-text', hide_label: true,
+                      lang: 'en', spellcheck: true,
+                      placeholder:t('projects.misc.in_javascript.unknown_placeholder'),
+                      disabled: is_disabled %>
+    <% end # is_disabled %>
+    <% if is_last %>
+      <br>
+    <% else %>
+      <hr>
+    <% end %>
+    </div>
+  </div>

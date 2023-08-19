@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Copyright 2015-2017, the Linux Foundation, IDA, and the
+# OpenSSF Best Practices badge contributors
+# SPDX-License-Identifier: MIT
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in
   # config/application.rb.
@@ -62,9 +66,9 @@ Rails.application.configure do
     # Bullet.bullet_logger = true
     # Bullet.console = true
     # Bullet.growl = true
-    # Bullet.xmpp = { :account  => 'bullets_account@boss-net.org.org',
-    #               :password => 'bullets_password_for_boss-net.org',
-    #               :receiver => 'your_account@boss-net.org.org',
+    # Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+    #               :password => 'bullets_password_for_jabber',
+    #               :receiver => 'your_account@jabber.org',
     #               :show_online_status => true }
     # Bullet.honeybadger = true
     # Bullet.bugsnag = true

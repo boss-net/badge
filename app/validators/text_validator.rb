@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# Copyright 2015-2017, the Linux Foundation, IDA, and the
+# OpenSSF Best Practices badge contributors
+# SPDX-License-Identifier: MIT
+
 class TextValidator < ActiveModel::EachValidator
   INVALID_CONTROL = /[\x01-\x08\x0b\x0c\x0e-\x1f]/.freeze
   def text_acceptable?(value)

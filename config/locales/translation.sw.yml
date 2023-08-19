@@ -1,0 +1,1191 @@
+---
+sw:
+  helpers:
+    select:
+      prompt: Tafadhali teua
+    submit:
+      create: Unda %{model}
+      update: Sasaisha %{model}
+      submit: Akibisha %{model}
+  hello: Jambo walimwengu
+  submit: Wasilisha
+  projects_count:
+    zero: Hamna Miradi
+    one: Mradi %{count}
+    few: Miradi %{count}
+    many: Miradi %{count}
+    other: Miradi %{count}
+  feed_title:
+  project_name_unknown:
+  locale_name:
+    en: Kiingereza
+    es: Kihispania
+    de: Kijerumani
+    fr: Kifaransa
+    ja: Kijapani
+    ru: Kirusi
+    sw: Kiswahili
+    zh-CN: Kichina (Kilichorahisishwa)
+    pt-BR:
+  layouts:
+    cii_best_practices: Mazoea Bora ya OpenSSF
+    toggle_navigation:
+    projects: Miradi
+    users: Watumiaji
+    account: Akaunti
+    profile: Maelezo mafupi
+    settings: Mipangilio
+    choose_locale: Chagua eneo
+    logout_html: <i class="fa fa-sign-out" aria-hidden="true"></i>
+      Ondoka
+    signup_html:
+    login_html: <i class="fa fa-sign-in" aria-hidden="true"></i>
+      Ingia
+    footer_text_html: >-
+      <small> <strong>Unahitaji msaada? Una swali? Unaona hitilafu?
+      Tafadhali <em><a href="mailto:&#99;ii&#45;badges&#45;questions&#64;lists&#46;boss-net&#46;or&#103;">tuma
+      barua pepe</a> </em>or <em><a href="https://github.com/boss-net/badge/issues"
+      target="_blank" rel="noopener">wasilisha suala</a></em>.</strong>
+      © 2015-2018 <a href="https://openssf.org" target="_blank"
+      rel="noopener">Open Source Security Foundation</a>, a <a
+      href="https://www.linuxfoundation.org/" target="_blank"
+      rel="noopener">Linux Foundation</a> Mradi Shirikishi. Haki
+      Zote Zimehifadhiwa. Tafadhali angalia <a href="https://www.linuxfoundation.org/privacy"
+      target="_blank" rel="noopener">sera ya faragha</a> and <a
+      href="https://www.linuxfoundation.org/terms" target="_blank"
+      rel="noopener">masharti ya utumiaji</a>. </small>
+  admin_only: Msimamizi pekee.
+  account_activations:
+    activated: Akaunti imeamilishwa!
+    delay:
+      zero: >-
+        Unaweza kuingia sasa. Hakuna ucheleweshaji wa kupambana
+        na taka baada ya uanzishaji.
+      one: >-
+        Kwa minajili ya kupambana na barua taka, lazima usubiri
+        saa moja baada ya uanzishaji kabla ya kuingia.
+      few: >-
+        Kwa minajili ya kupambana na barua taka, lazima usubiri
+        masaa %{count} baada ya uanzishaji kabla ya kuingia.
+      other: >-
+        Kwa minajili ya kupambana na barua taka, lazima usubiri
+        masaa %{count} baada ya uanzishaji kabla ya kuingia.
+    failed_activation: Kiungo batili cha uanzishaji
+  password_resets:
+    forgot_password:
+    reset_password:
+    password_confirmation:
+    password_empty:
+    password_reset:
+    instructions_sent:
+    reset_expired:
+    update_password:
+  sessions:
+    login_header: Ingia
+    login_with_github_html: <span class="fa fa-github"></span>Ingia
+      kwa kutumia GitHub
+    login_automatic_signup: >-
+      Ingio inayotumia GitHub itajisajili kiatomati ikiwa ni lazima.
+      Ukijisajili, jina lako (kama lilivyopewa GitHub) na jina
+      la utani la GitHub litaonyeshwa hadharani, na unaweza kubadilisha
+      jina lako wakati wowote. Anwani yako ya barua pepe itahifadhiwa
+      kwa faragha na itatumika tu kwa shughuli zinazohusiana na
+      nishani; hatutatoa kwa wengineo isipokuwa inahitajika kisheria.
+    or: au
+    email: Barua pepe
+    password: Nywila
+    forgot_password: Kasahau nywila yako?
+    remember_me: Wacha nibaki nimeingia (kwa kutumia kidakuzi
+      cha kudumu)
+    cookie_details_html: >-
+      <a href="/sw/cookies" target="_blank" rel="noopener"><i>Jifunze
+      zaidi vidakuzi.</i></a>
+    login_custom: Ingia kwa kutumia akaunti inayokufaa
+    no_custom: Hamna akaunti ya kukufaa? Jiandikishe sasa!
+    already_logged_in: Umeingia tayari.
+    login_disabled: Ingio zote zimezimwa ka muda
+    incorrect_login_info: Habari ya kuingia si sahihi
+    invalid_combo: Mchanganyiko batili wa barua pepe / nywila
+    signed_in: 'Umeingia! Ingio la mwisho: %{last_login_at}'
+    not_activated: >-
+      Akaunti haijaamilishwa. Angalia barua pepe yako kupata kiunga
+      cha uanzishaji.
+    signed_out: Umetoka!
+    no_login_time: "(Hakuna wakati uliopita uliorekodiwa.)"
+    cannot_login_yet: >-
+      Samahani, bado huwezi kuingia. Kama hatua ya kupambana na
+      barua taka, kuna ucheleweshaji baada ya kufungua akaunti
+      ya ndani kabla ya kuingia.
+  static_pages:
+    error_404:
+      heading: 'Kosa 404: Ukurasa Haukupatikana'
+      no_such_page: Samahani, hakuna ukurasa kama huo.
+      please_home: Tafadhali nenda kwenye ukurasa wa kwanza.
+    error_409:
+      heading: 'Kosa 409: Mgogoro'
+      conflict: >-
+        Samahani, ingizo nyingi zinalingana na ombi, na kusababisha
+        mgogoro.
+    home:
+      badge_program: Programu ya Nishani za Mazoea Bora ya OpenSSF
+      get_your_badge: Pata Nishani Yako Sasa!
+      check_us_out: Tazama tovuti ya Nishani ya Mazoea Bora ya
+        OpenSSF!
+      p1_html: >-
+        <a href="https://www.linuxfoundation.org/">Linux Foundation
+        (LF)</a> <a href="https://openssf.org/">Open Source Security
+        Foundation (OpenSSF)</a> Nishani ya Mazoea Bora ni njia
+        kwa minajili miradi ya Programu Huru na Zana Huria (FLOSS)
+        kuonyesha kuwa zinafuata mazoea bora. Miradi yaweza kujihakikisha
+        kwa hiari yao binafsi, bila malipo, kwa kutumia hii tovuti
+        kueleza vile wanafuata kila moja ya mazoea bora. Nishani
+        za Mazoea Bora ya OpenSSF imevuviwa na nishani mingi zinazopatikana
+        kwenye miradi ya GitHub. Watumizi wa hiyo nishani wanaweza
+        kwa haraka kadiri ni miradi ipi ya FLOSS inayofuata mazoea
+        bora na matokeo sanasana inaweza kutoa programu za kompyuta
+        zilizo na usalamu wa hali ya juu.
+      p2_html: >-
+        Unaweza ona kwa urahisi <a href="/sw/criteria/0">vigezo
+        vya nishani iliyohitimu</a>. Taarifa zaidi kuhusu programu
+        ya nishani ya Mazoea Bora ya OpenSSF <a href='https://github.com/boss-net/badge'>inapatikana
+        katika GitHub</a>. <a href="/sw/project_stats">Takwimu
+        ya mradi</a> na <a href="/sw/criteria_stats">takwimu ya
+        vigezo</a> yapatikana. <a href="/sw/projects">Kurasa ya
+        miradi</a> inaonyesha miradi inayoshiriki na uwezekano
+        wa kufanya miulizo (k.m., unaweza kuona <a href="/sw/projects?gteq=100">miradi
+        iliyo na nishani ya kuhitimu</a>). Pia unaweza kuona <a
+        href='/sw/projects/1/0'>kama mfano (mahali tunapojaribu
+        kupata nishani yetu wenyewe)</a>.
+      p3_html: >-
+        <em>Faragha na masuala ya kisheria</em>: Tafadhali angalia
+        <a href="https://www.linuxfoundation.org/privacy">sera
+        ya faragha</a>, <a href="/sw/cookies">about cookies</a>,
+        na <a href="https://www.linuxfoundation.org/terms">masharti
+        ya utumiaji</a>. Misimbo ya kuweka nishani kwenye programu
+        yenyewe imetolewa kupitia leseni ya <a href="https://opensource.org/licenses/MIT">MIT</a>
+        (miradi zinayofuatia nishani zinapatikana kupitia leseni
+        zao husika). Yote inayopatikana-hadharani na siyo mambo
+        ya msimbo inayosimamiwa na programu ya kuwekeza nishani
+        imetolewa kupitia angalau <a href="https://creativecommons.org/licenses/by/3.0/">Creative
+        Commons Attribution License version 3.0 (CC-BY-3.0)</a>;
+        mambo mapya yasiyo msimbo imetolewa kupitia CC-BY toleo
+        3.0 au ya baadaye (CC-BY-3.0+). Kama inarejelea kwa pamoja
+        au imedokezwa vinginevyo, tafadhali tambua wachangiaji
+        wa nishani ya Mazoea Bora ya OpenSSF.
+      share_header_html: "<p> Tafadhali shiriki hii: </p>"
+      twitter: Twitter
+      reddit: Reddit
+      facebook: Facebook
+      linkedin: LinkedIn
+      hacker_news: Hacker News
+      email: Barua pepe
+      projects_earned_badge: 'Baadhi ya wapokeaji wa nishani:'
+    cookies:
+      cookies_header: Kuhusu Vidakuzi
+      cookies_info_html:
+    criteria_stats:
+      criteria: Takwimu za Vigezo
+      see_actual_criteria: Unaweza pia kuona vigezo halisi.
+      level: Kiwango
+      must: LAZIMA
+      should: INAPASWA
+      suggested: PENDEKEZA
+      total_active: Jumla ya yaliyo amilifu
+      allow_na: Ruhusu N/A
+      met_justification_required: Kukabiliana na sababu unahitajika
+      require_url: Inahitaji URL
+      met_justification_or_url_required: Kukabiliana na sababu
+        au URL unahitajika
+      details: Inajumuisha maelezo
+      new_this_level: Mpya katika kwango hiki
+      future: Usoni
+      project_stats_html:
+  users:
+    new:
+      signup_header: Jisajili
+      intro_github: >-
+        Ikiwa una akaunti ya GitHub, unaweza kuitumia kuingia
+        badala yake (kuingia mara ya kwanza kwa GitHub kutakusajili
+        kiatomati).
+      intro_html: >-
+        Ikiwa hautaki kuingia na akaunti ya GitHub, unaweza kujisajili
+        hapa badala yake (hii inaunda akaunti maalum kwa kutumia
+        anwani yako ya barua pepe). Ukijisajili, jina lako litaonyeshwa
+        hadharani, na unaweza kubadilisha jina lako wakati wowote.
+        Anwani yako ya barua pepe itahifadhiwa kwa faragha na
+        itatumika tu kwa minajili inayohusiana na nishani; hatutatoa
+        kwa watu wengine isipokuwa inapohitajika kisheria.<br><br>
+        Ikiwa haukupokea kiunga chako cha uanzishaji, tafadhali
+        jisajili tena na tutakutumia mpya.
+      name: Jina
+      email: Barua pepe
+      preferred_locale: Eneo linalopendelewa
+      password: Nywila
+      password_confirmation: Thibitisha Nywila
+      create_account: Unda akaunti yangu iliyogeuza kunifaa
+    edit:
+      update_user_info: Sasisha Maelezo ya Mtumiaji
+      save_changes: Hifadhi mabadiliko
+      inadequate_privileges: Samahani, huruhusiwi kufanya hivyo.
+    update:
+      profile_updated: Wasifu umesasishwa
+    show:
+      edit_user: Hariri mtumiaji
+      projects_owned: 'Miradi inayomilikiwa:'
+      projects_additional_rights: 'Miradi iliyo na haki za ziada:'
+      other_projects_edit: 'Miradi mingine inayoweza kuhaririwa
+        kulingana na GitHub:'
+      json_link: JSON
+      in_json_format: >-
+        Data ya mtumiaji katika muundo wa JSON (mfumo sanifu inayoweza
+        kusambazwa)
+      see_external: Ukurasa wa nje wa Mtumiaji.
+      local_account: Akaunti iliyogeuzwa kukufaa (ya ndani)
+      is_admin: Mtumiaji huyu ni msimamizi wa uwasilishaji wa
+        nishani.
+      as_admin: 'kama msimamizi, unaweza pia:'
+      send_email_to: Tuma barua pepe
+      delete_link_name: Futa akaunti ya mtumiaji
+      confirm_delete: Je! Una uhakika unataka kufuta huyu mtumiaji?
+    destroy:
+      cannot_delete_user_with_projects: Haiwezi kufuta mtumiaji
+        ambaye anamiliki miradi.
+      cannot_delete_self: Haiwezi kujifuta.
+      user_deleted: Mtumiaji amefutwa.
+    redirect_existing: Mtumiaji huyo tayari yupo. Je! Ulimaanisha
+      kuingia?
+    new_activation_link_created: >-
+      Kiungo kipya cha uanzishaji kimeundwa. Tafadhali angalia
+      barua pepe yako baada ya dakika chache ili kuamsha akaunti
+      yako. (Kuna kucheleweshwa kwa kukusudia kukabiliana na barua
+      taka.)
+    please_log_in: Tafadhali ingia.
+  project_stats:
+    index:
+      project_stats_header:
+      all_projects:
+      projects_nontrivial:
+      projects_activity_30:
+      projects_silver:
+      projects_gold:
+      projects_completed_silver_and_gold:
+      percent_projects_earning_badges:
+      daily_activity:
+      reminders:
+      active_projects:
+      active_in_progress:
+      active_edited:
+      active_edited_in_progress:
+      projects_created_since_yesterday:
+      projects_updated_since_yesterday:
+      projects_created_average_7_days:
+      projects_updated_average_7_days:
+      projects_created_updated_daily:
+      reminders_sent_since_yesterday:
+      reactivated_projects:
+      admin_html:
+      raw_data:
+      json_format:
+      csv_format:
+      user_statistics:
+      users:
+      github_users:
+      local_users:
+      users_created_since_yesterday:
+      users_updated_since_yesterday:
+      users_with_projects:
+      users_without_projects:
+      users_with_multiple_projects:
+      users_with_passing_projects:
+      users_with_silver_projects:
+      users_with_gold_projects:
+  projects:
+    index:
+      all:
+      passing_100:
+      in_progress_variable:
+      silver_in_progress_variable:
+      silver_200:
+      gold_in_progress_variable:
+      gold_300:
+      in_progress_next:
+      passing_next:
+      silver_next:
+      add_link:
+      add_new:
+      badge_status:
+      exclude_passing:
+      text_search:
+      name_or_description:
+      search:
+    table:
+      id: Kitambulisho
+      name: Jina
+      description: Maelezo
+      website: Tovuti
+      license: Leseni
+      owner: Mmiliki
+      last_achieved: Mpato wa mwisho ulikua
+      pachieved: Vipimo%
+      badge:
+      can_also_sort:
+      repository_url:
+      create_time:
+      update_time:
+      user_id: kitambulisho cha mtumiaji
+      paren_name_unknown: "(Jina Halijulikani)"
+      badge_level:
+    new:
+      thanks_adding:
+      post_delay_warning:
+      new_badge:
+      tell_us:
+      may_select_html:
+      new_badge_or:
+      select_one_github:
+      submit_github:
+      project_already_exists:
+      url_of_homepage:
+      placeholder_of_homepage:
+      url_of_repo:
+      placeholder_of_repo:
+      submit_urls:
+      final_text_html:
+      sign_in_first:
+      original_repos:
+      fork_repos:
+    delete_form:
+      info_html:
+      rationale_placeholder:
+      delete_action:
+      too_short:
+      more_non_whitespace:
+    edit:
+      edit_status:
+      repo_url_limits:
+      changed_since_html:
+      successfully_updated:
+      congrats_new:
+      lost_badge:
+      static_analysis_updated_html:
+      save_and_continue:
+      submit_and_exit:
+      submit_cc_by_3plus_html:
+    show:
+      edit:
+      delete:
+      confirm_delete:
+      back:
+      owned_by:
+      created_at_html:
+      updated_at_html:
+      last_lost_html:
+      last_achieved_html:
+      cc_by_3plus_html:
+      cc_by_3only_html:
+    form_early:
+      badge_intro:
+        description:
+        details_html:
+      level:
+        '0':
+        0_html:
+        '1':
+        1_html:
+        '2':
+        2_html:
+      got_badge:
+        description_1:
+        badge_alt:
+        description_2:
+        details_html:
+        editing_description_html:
+    form_basics:
+      project_name:
+        description:
+        details:
+        placeholder:
+      description:
+        description:
+        details:
+        placeholder:
+      homepage_url:
+        description:
+        placeholder:
+      repo_url:
+        description:
+        placeholder:
+      implementation_languages:
+        description:
+        details:
+        placeholder:
+      additional_rights_changes:
+        description:
+        details_html:
+        placeholder:
+      cpe:
+        description_html:
+        details_html:
+        placeholder:
+      license:
+        description_html:
+        details_html:
+        title:
+        placeholder:
+    misc:
+      in_javascript:
+        collapse_all_title:
+        collapse_all:
+        expand_all_title:
+        expand_all:
+        show_details:
+        hide_details:
+        show_all_details:
+        hide_all_details:
+        show_met_title:
+        show_met_html:
+        hide_met_title:
+        hide_met_html:
+        passing_alt:
+        barely_alt:
+        failing_alt:
+        unknown_alt:
+        met_url_placeholder:
+        met_justification_placeholder:
+        met_placeholder:
+        unmet_placeholder:
+        na_justification_placeholder:
+        na_placeholder:
+        unknown_placeholder:
+      disabled_reminders:
+      general_comments:
+        description:
+        placeholder:
+      some_not_crypto_html:
+      dont_use_crypto:
+      future_header_html:
+      toggle_details_title:
+      details:
+      url_required:
+      future_criterion:
+      url_required_warning:
+      justification_required_warning:
+      in_development_warning_html:
+      close:
+    delete:
+      done:
+  report_mailer:
+    subject_achieved_passing: HONGERA kwa upato wa %{new_level}
+      ya nishani ya mazoea bora!
+    subject_no_longer_passing: Nishani yako ya mazoea bora kwa
+      sasa hauna %{old_level}
+    subject_new_project: >-
+      Umeongeza mradi kwenye Programu ya Nishani za Mazoea Bora
+      ya OpenSSF
+    subject_reminder: Mradi wako bado hauna nishani ya "mazoea
+      bora"
+    subject_project_deleted: Mradi %{project_id} uliopewa jina
+      %{project_name} ulifutwa
+    new_project_heading:
+    new_project_part1:
+    new_project_part2:
+    new_project_part3_html:
+    new_project_part3_text:
+    reminder_body_html:
+    reminder_body_text:
+    gained_level_part1:
+    gained_level_part2:
+    gained_level_part3:
+    in_markdown_add:
+    in_html_add:
+    lost_level_message:
+    ending:
+  user_mailer:
+    account_activation:
+      before_html: |-
+        <h1>Programu ya Nishani za Mazoea Bora ya OpenSSF</h1>
+        <p>Jambo,</p>
+        <p>
+        Karibu kwenye programu ya Nishani!
+        Bonyeza kiunganishi hapo chini kuamilisha akaunti yako:
+        </p>
+      before_text: |-
+        Jambo,
+        Karibu kwenye programu ya Nishani za Mazoea Bora ya OpenSSF!
+        Chagua kiunganishi hapo chini kuamilisha akaunti yako:
+      activate: Amilisha
+      subject: Akaunti imeamilishwa!
+    github_welcome:
+      before_html: |-
+        <h1>Programu ya Nishani za Mazoea Bora ya OpenSSF</h1>
+        <p>Jambo,</p>
+        <p>
+        Asante kwa kuunganisha akaunti yako ya GitHub na karibu kwenye Programu ya Nishani za Mazoea Bora ya OpenSSF!
+        </p>
+        <p>
+        Kama hauku anzisha tendo hili, tafadhali kagua batli yako ya usalama kwa GitHub iliyomo ndani ya Mipangilio&gt;Usalama.
+        </p>
+      before_text: |-
+        Jambo,
+        Asante kwa kuunganisha akaunti yako ya GitHub na karibu kwenye Programu ya Nishani za Mazoea Bora ya OpenSSF!
+        Kama hauku anzisha tendo hili, tafadhali kagua batli yako ya usalama kwa GitHub iliyomo ndani ya Mipangilio&gt;Usalama.
+      subject: Karibu kwenye Programu ya kuwekeza Nishani
+    user_update:
+      before_text: Baadhi ya data ya mtumiaji ya akaunti yako
+        imesasishwa.
+      username_changed: Jina la mtumiaji limebadilishwa.
+      email_changed: Anwani ya barua pepe imebadilishwa.
+      password_changed: Nywila imebadilishwa.
+      locale_changed: Eneo limebadilishwa.
+      current_state: 'Kwa hali ya sasa, angalia:'
+      after_text: Tafadhali tujulishe ikiwa kuna tatizo.
+      subject: Data ya mtumiaji imebadilishwa
+    password_reset:
+      before_html: |-
+        <h1>Kuweka upya nywila</h1>
+        <p>Ili kuweka upya nywila yako bonyeza kiungo hapo chini:</p>
+      before_text: 'Ili uweke upya nywila yako bonyeza kiungo
+        hapo chini:'
+      after_html: |-
+        <p>Kiungo hiki kitaisha matumizi baada ya masaa mawili.</p>
+        <p>
+        Ikiwa haukuomba nywila yako kuwekwa upya, tafadhali puuza barua pepe hii na nywila yako itabaki vile ilivyo.
+        </p>
+      after_text: |-
+        Kiungo hiki kitaisha matumizi baada ya masaa mawili.
+        Ikiwa haukuomba nywila yako kuwekwa upya,
+        tafadhali puuza barua pepe hii na
+        nywila yako itabaki vile ilivyo.
+      subject: Nywila iwekwa upya
+      reset_password: Weka upywa nywila
+  criteria:
+    '0':
+      description_good:
+        description:
+        details:
+        met_placeholder:
+      interact:
+        description:
+        met_placeholder:
+      contribution:
+        description: >-
+          Habari juu ya jinsi ya kuchangia LAZIMA ieleze mchakato
+          wa uchangiaji (kwa mfano, je! Maombi ya kuvuta yanatumika?)
+        details: >-
+          Tunafikiria kuwa <a href="https://guides.github.com/activities/contributing-to-open-source/">miradi
+          kwenye GitHub hutumia maswala na kuvuta maombi</a> isipokuwa
+          palipoonyeshwa vingine. Habari hii inaweza kuwa fupi,
+          kwa mfano, ikisema kuwa mradi hutumia maombi ya kuvuta,
+          msako wa suala, au machapisho kwenye orodha ya barua
+          (ipi?)
+        met_placeholder: >-
+          (URL inahitajika) Mchakato ni upi? Je! Ni URL gani inayoielezea?
+      contribution_requirements:
+        description: >-
+          Habari juu ya jinsi ya kuchangia INAPASWA kujumuisha
+          mahitaji ya michango inayokubalika (k.m., rejeleo la
+          kiwango chochote kinachohitajika cha usimbaji).
+        unmet_placeholder: >-
+          Kwa nini mahitaji ni dhahiri sana kama kwamba habari
+          hii haihitajiki?
+      floss_license:
+        description:
+        details:
+      floss_license_osi:
+        description:
+        details:
+      license_location:
+        description:
+        details:
+      documentation_basics:
+        description:
+        details:
+        met_placeholder:
+      documentation_interface:
+        description:
+        details:
+      sites_https:
+        description:
+        details:
+      discussion:
+        description:
+        details:
+      english:
+        description:
+        details:
+      repo_public:
+        description:
+        details:
+      repo_track:
+        description:
+      repo_interim:
+        description:
+        details:
+      repo_distributed:
+        description:
+        details:
+      version_unique:
+        description:
+        details:
+      version_semver:
+        description:
+        details:
+      version_tags:
+        description:
+      release_notes:
+        description:
+        details:
+      release_notes_vulns:
+        description:
+        details:
+      report_process:
+        description:
+      report_tracker:
+        description:
+        unmet_placeholder:
+      report_responses:
+        description:
+      enhancement_responses:
+        description:
+        details:
+      report_archive:
+        description:
+      vulnerability_report_process:
+        description:
+        details:
+      vulnerability_report_private:
+        description:
+        details:
+      vulnerability_report_response:
+        description:
+        details:
+      build:
+        description: >-
+          Ikiwa programu iliyotengenezwa na mradi inahitaji ujenzi
+          wa matumizi, mradi LAZIMA utoe mfumo wa kujenga ambao
+          unaweza kujenga programu kiotomatiki kutoka kwa chanzo-msimbo.
+        details: >-
+          Mfumo wa kujenga huamua ni hatua gani zinahitaji kutendeka
+          ili kujenga tena programu (na kwa mpangilio gani), na
+          kisha kutekeleza hatua hizo. Kwa mfano, inaweza kuomba
+          kikusanyaji kukusanya fumbo-chanzo. Ikiwa inayoweza
+          kutekelezwa imeundwa kutoka kwa fumbo-chanzo, lazima
+          iwezeshe marekebisho kwenye fumbo-chanzo ya mradi na
+          kisha itengeneze msasisho inayoweza kutekelezwa na marekebisho
+          hayo. Ikiwa programu iliyotolewa na mradi unategemea
+          maktaba ya nje, mfumo wa kujenga <em>haina</em> haja
+          ya kujenga maktaba hizo za nje. Ikiwa hakuna haja ya
+          kujenga chochote kutumia programu baada ya fumbo-chanzo
+          kubadilishwa, chagua "haitumiki" (N / A).
+      build_common_tools:
+        description: >-
+          INAPENDEKEZWA kuwa zana za kawaida zitumike kujenga
+          programu.
+        details: >-
+          Kwa mfano, Maven, Ant, cmake, autotools, make, rake
+          (Ruby), au <a href="https://cran.r-project.org/web/packages/devtools/index.html">devtools</a>
+          (R).
+      build_floss_tools:
+        description: >-
+          Mradi UNAPASWA kujengwa kwa kutumia zana za FLOSS pekee
+          yake.
+      test:
+        description:
+        details:
+      test_invocation:
+        description:
+        details:
+      test_most:
+        description:
+      test_continuous_integration:
+        description:
+      test_policy:
+        description:
+        details:
+      tests_are_added:
+        description:
+        details:
+      tests_documented_added:
+        description:
+        details:
+      warnings:
+        description:
+        details:
+      warnings_fixed:
+        description:
+        details:
+      warnings_strict:
+        description:
+        details:
+      know_secure_design:
+        description:
+        details:
+      know_common_errors:
+        description:
+        details:
+      crypto_published:
+        description: >-
+          Programu iliyotengenezwa na mradi LAZIMA itumie, kwa
+          chaguo-msingi, tu itifaki za kriptografia na mifumbo
+          ambazo zimechapishwa hadharani na kukaguliwa na wataalam
+          (ikiwa itifaki za kriptografia na mafumbo imetumika).
+        details: >-
+          Vigezo hivi vya kriptografia mara mingi havitumiki kwa
+          sababu programu zingine hazina haja ya kutumia moja
+          kwa moja uwezo wa kriptografia.
+      crypto_call:
+        description: >-
+          Ikiwa programu iliyotengenezwa na mradi ni programu
+          au maktaba, na kusudi lake la msingi sio kutekeleza
+          usimbuaji, basi INAPASWA tu kuita programu iliyoundwa
+          kihususa kutekeleza kazi za kielelezo; HAIPASWI kutekeleza-upya
+          shughuli hiyo.
+      crypto_floss:
+        description: >-
+          Utendaji wote katika programu iliyotengenezwa na mradi
+          ambayo inategemea usimbuaji LAZIMA iweze kutekelezwa
+          kwa kutumia FLOSS.
+        details: >-
+          Tazama <a href="https://opensource.org/osr">Mahitaji
+          ya Viwango wazi ya Programu kupitia Open Source Initiative</a>.
+      crypto_keylength:
+        description: >-
+          Mifumo ya usalama ndani ya programu inayozalishwa na
+          mradi LAZIMA itumie kwa msingi keylengths ambazo angalau
+          zinakidhi mahitaji ya chini ya NIST kufikia mwaka wa
+          2030 (kama ilivyoelezwa mnamo 2012). LAZIMA iwe rahisi
+          kusanidi programu ili keylengths ndogo zimezimwa kabisa.
+        details: >-
+          Vipimo hivi vya urefu wa charaza ni: symmetric key 112,
+          factoring modulus 2048, discrete logarithm key 224,
+          discrete logarithmic group 2048, elliptic curve 224,
+          na hash 224 (ufichuzi wa nywila haujashughulikiwa kwenye
+          urefu wa charaza hii, maelezo zaidi ya ufichuzi wa nywila
+          yanapatikana ndani ya kigezo cha <a href="#crypto_password_storage">crypto_password_storage</a>).
+          Ona <a href="https://www.keylength.com">https://www.keylength.com</a>
+          kwa mliganisho wa mapendekezo ya funguo-refu kutoka
+          mashirika mbali mbali. Programu YAWEZA kubali funguo-refu
+          ndogo katika usanidi (haifai kukubali, maana hii huwacha
+          mashambulizi ya kushusha, lakini funguo-refu fupi wakati
+          mwingine ina manufaa ya upatanifu).
+      crypto_working:
+        description:
+        details:
+      crypto_weaknesses:
+        description:
+        details:
+      crypto_pfs:
+        description: >-
+          Mifumo ya usalama ndani ya programu iliyotengenezwa
+          na mradi INAPASWA kutekeleza kwa ukamilifu usiri wa
+          umbele ya itifaki za makubaliano ya funguo ili funguo
+          la kipindi kilicho tokana na kikao cha vifungo muda-mrefu
+          haziwezi kuridhi mabaya ikiwa mojawapo ya vifunguo vya
+          muda-mrefu imeridhi mabaya katika usoni.
+      crypto_password_storage:
+        description: >-
+          Ikiwa programu iliyotengenezwa na mradi imesababisha
+          uhifadhi wa nywila kwa minajili ya uthibitishaji ya
+          watumiaji wa kutoka nje, nywila LAZIMA zihifadhiwe kwa
+          mficho uliorudiarudia na chumvi kwa kila-mtumiaji kwa
+          kutumia kanuni ya upanuaji (rudiarudia) wa funguo (k.m.,
+          Argon2id, Bcrypt, Scrypt, or PBKDF2). Ona pia  <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">Kurasadogo
+          ya Uhifadhi wa Nywila la OWASP</a>).
+        details: >-
+          Kigezo hili linatumika tu wakati programu linatekeleza
+          uthibitishaji wa watumiaji kutumia nywila kwa watumiaji
+          wa nje (ambayo pia ni uthibitishaji unaelekezwa ndani),
+          kama vile programu za tovuti zinazobakia seva). Haitumiki
+          katika visa ambavyo programu inahifadhi nywila ili kudhibitisha
+          ndani ya mifumo mingine (ambayo pia ni ithibitishaji
+          unaelekezwa nje, k.m., programu inatekeleza teja la
+          mfumo lingineyo), maana angalau sehemu za programu lazima
+          ziwe na njia ya kupata hiyo nywila isigalifichwa.
+      crypto_random:
+        description: >-
+          Mifumo ya usalama ndani ya programu iliyotengenezwa
+          na mradi LAZIMA itoe funguo zote za kriptologia na nonces
+          kwa kutumia kitengeneza cha nambari za bahati kuptia
+          kriptologia salama, na ISIWEZE kufanya hivo kutumia
+          vitengenezi zisizo salama kikriptologia.
+        details:
+      delivery_mitm:
+        description:
+        details:
+      delivery_unsigned:
+        description:
+        details:
+      vulnerabilities_fixed_60_days:
+        description:
+        details:
+      vulnerabilities_critical_fixed:
+        description:
+      no_leaked_credentials:
+        description:
+        details:
+      static_analysis:
+        description:
+        details:
+        na_placeholder:
+        met_placeholder:
+      static_analysis_common_vulnerabilities:
+        description:
+        details:
+      static_analysis_fixed:
+        description:
+        details:
+      static_analysis_often:
+        description:
+      dynamic_analysis:
+        description:
+        details:
+      dynamic_analysis_unsafe:
+        description:
+        details:
+      dynamic_analysis_enable_assertions:
+        description:
+        details:
+      dynamic_analysis_fixed:
+        description:
+        details:
+      maintained:
+        description:
+        details:
+    '1':
+      achieve_passing:
+        description:
+      contribution_requirements:
+        description:
+      dco:
+        description:
+        details:
+      governance:
+        description:
+        details:
+      code_of_conduct:
+        description:
+        details:
+      roles_responsibilities:
+        description:
+        details:
+      access_continuity:
+        description:
+      bus_factor:
+        description:
+        details:
+      documentation_roadmap:
+        description:
+        details:
+      documentation_architecture:
+        description:
+        details:
+      documentation_security:
+        description:
+        details:
+      documentation_quick_start:
+        description:
+        details:
+      assurance_case:
+        description:
+        details:
+      documentation_current:
+        description:
+        details:
+      documentation_achievements:
+        description:
+        details:
+      accessibility_best_practices:
+        description:
+        details:
+      internationalization:
+        description:
+        details:
+      sites_password_security:
+        description:
+        details:
+      maintenance_or_update:
+        description:
+      report_tracker:
+        description:
+      vulnerability_report_credit:
+        description:
+      vulnerability_response_process:
+        description:
+        details:
+      coding_standards:
+        description:
+        details:
+      coding_standards_enforced:
+        description:
+        details:
+      build_standard_variables:
+        description:
+        details:
+      build_preserve_debug:
+        description:
+        details:
+      build_non_recursive:
+        description:
+        details:
+      build_repeatable:
+        description:
+        details:
+      installation_common:
+        description:
+        details:
+      installation_standard_variables:
+        description:
+      installation_development_quick:
+        description:
+        details:
+      external_dependencies:
+        description:
+        details:
+      dependency_monitoring:
+        description:
+        details:
+      updateable_reused_components:
+        description:
+        details:
+      interfaces_current:
+        description:
+      automated_integration_testing:
+        description:
+        details:
+      regression_tests_added50:
+        description:
+      test_statement_coverage80:
+        description:
+        details:
+      test_policy_mandated:
+        description:
+      tests_documented_added:
+        description:
+      warnings_strict:
+        description:
+      implement_secure_design:
+        description:
+        details:
+      crypto_weaknesses:
+        description:
+      crypto_algorithm_agility:
+        description:
+      crypto_credential_agility:
+        description:
+      crypto_used_network:
+        description:
+      crypto_tls12:
+        description:
+      crypto_certificate_verification:
+        description:
+        details:
+      crypto_verification_private:
+        description:
+      signed_releases:
+        description:
+        details:
+      version_tags_signed:
+        description:
+      input_validation:
+        description:
+        details:
+      hardening:
+        description:
+        details:
+      static_analysis_common_vulnerabilities:
+        description:
+      dynamic_analysis_unsafe:
+        description:
+    '2':
+      achieve_silver:
+        description:
+      bus_factor:
+        description: Mradi LAZIMA uwe na "bus factor" ya 2 au
+          zaidi.
+      contributors_unassociated:
+        description: Mradi LAZIMA uwe na angalau wachangiaji wawili
+          wasiohusika.
+        details:
+      copyright_per_file:
+        description:
+        details:
+      license_per_file:
+        description:
+        details:
+      repo_distributed:
+        description:
+      small_tasks:
+        description:
+        details:
+      require_2FA:
+        description:
+      secure_2FA:
+        description:
+        details:
+      code_review_standards:
+        description: >-
+          Mradi LAZIMA uandike mahitaji yake ya kukagua msimbo,
+          pamoja na jinsi ukaguzi wa nambari unafanywa, nini lazima
+          ichunguzwe, na nini kinachohitajika ili ikubalike.
+        details:
+      two_person_review:
+        description:
+      build_reproducible:
+        description:
+        details:
+      test_invocation:
+        description:
+      test_continuous_integration:
+        description:
+        details:
+      test_statement_coverage90:
+        description:
+      test_branch_coverage80:
+        description:
+      crypto_used_network:
+        description:
+      crypto_tls12:
+        description:
+      hardened_site:
+        description:
+        details:
+      security_review:
+        description:
+        details:
+      hardening:
+        description:
+      dynamic_analysis:
+        description:
+      dynamic_analysis_enable_assertions:
+        description:
+  criteria_overall:
+    beginning_header_all:
+    beginning_header_0:
+    beginning_header_1:
+    beginning_header_2:
+    beginning_all_html:
+    beginning_0_html:
+    beginning_1_html:
+    beginning_2_html:
+    see_discussion_html:
+    future:
+    na_allowed:
+    na_justification_required:
+    met_justification_required:
+    met_url_required:
+  headings:
+    Accessibility and internationalization:
+    Analysis:
+    Automated test suite:
+    Identification:
+    Prerequisites:
+    Basic project website content:
+    Basics:
+    Bug-reporting process:
+    Change Control:
+    Coding standards:
+    Documentation:
+    Dynamic code analysis:
+    Externally-maintained components:
+    FLOSS license:
+    Future:
+    future:
+    Installation system:
+    New functionality testing:
+    Other:
+    Other security issues:
+    Previous versions:
+    Project oversight:
+    Public version-controlled source repository:
+    Publicly known vulnerabilities fixed:
+    Quality:
+    Release notes:
+    Reporting:
+    Secure development knowledge:
+    Secure release:
+    Secured delivery against man-in-the-middle (MITM) attacks:
+    Security:
+    Static code analysis:
+    Unique version numbering:
+    Use basic good cryptographic practices:
+    Vulnerability report process:
+    Warning flags:
+    Working build system:
+  criterion_status:
+    Met:
+    Unmet:
+    NA:
+  error_messages:
+    need_home_page_or_url:
+    form_contains:
+      one:
+      few:
+      many:
+      other:
+    not_an_email:
+    known_bad_password:
+    valid_text:
+    url_message:
+  last_entry:
+  criteria_discussion:
+    intro_p01_html:
+    intro_p02_html:
+    intro_p03_html:
+    intro_p04_html:
+    intro_p05_html:
+    intro_p06_html:
+    intro_p07_html:
+    intro_p08_html:
+    structure_p01_html:
+    structure_p02_html:
+    structure_p03_html:
+    other_p01_html:
+    other_p02_html:
+    automation_p01_html:
+    automation_p02_html:
+    automation_p03_html:
+    automation_p04_html:
+    changes_p01_html:
+    changes_p02_html:
+    changes_p03_html:
+    keywords_p01_html:
+    keywords_p02_html:
+    keywords_p03_html:
+    keywords_p04_html:
+    keywords_p05_html:
+    keywords_p06_html:
+    keywords_p07_html:
+    achieving_p01_html:
+    achieving_p02_html:
+    achieving_p03_html:
+    achieving_p04_html:
+    achieving_p05_html:
+    achieving_p06_html:
+    terminology_p01_html:
+    terminology_p02_html:
+    terminology_p03_html:
+    terminology_p04_html:
+    terminology_p05_html:
+    terminology_p06_html:
+    terminology_p07_html:
+    terminology_p08_html:
+    terminology_p09_html:
+    terminology_p10_html:
+    noncriteria_p01_html:
+    noncriteria_p02_html:
+    noncriteria_p03_html:
+    noncriteria_p04_html:
+    noncriteria_p05_html:
+    noncriteria_p06_html:
+    noncriteria_p07_html:
+    noncriteria_p08_html:
+    noncriteria_p09_html:
+    identify_p01_html:
+    identify_p02_html:
+    criteria_why_p01_html:
+    criteria_why_p02_html:
+    criteria_why_p03_html:
+    criteria_why_p04_html:
+    criteria_why_p05_html:
+    self_certification_p01_html:
+    self_certification_p02_html:

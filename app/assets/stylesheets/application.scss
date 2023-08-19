@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ * Note that this uses jquery-ui/autocomplete (to do a polyfill for Safari).
+ * There are reports that jquery-ui interferes with bootstrap; I hope those
+ * have been resolved.
+ *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui/autocomplete
+ *= require rails_bootstrap_forms
+ *= require bootstrap-social
+ *= require font-awesome
+ */
+
+/* Work around a bug in Bootstrap's navigation bar. When the display is narrow,
+   the navigation bar gets longer, but the body padding doesn't adjust.
+   The result is that the navigation bar overlaps the beginning of the
+   body content below it.  This particular workaround is based on:
+   http://stackoverflow.com/questions/10336194/
+   twitter-bootstrap-top-nav-bar-blocking-top-content-of-the-page
+   but note that for us the key breakpoint is width 767px, not 979px.  */
+
+body {
+  padding-top: 80px;
+}
+@media (max-width: 767px) {
+  body {
+    padding-top: 100px;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+.container_padding {
+  padding: 1em 0;
+}
+
+.container_margins {
+  min-height: 100%;
+  height: auto;
+  margin: 1.5em auto -9.6em;
+  padding-bottom: 100px;
+}
+
+textarea {
+  min-height: 12ex;
+}
+
+.btn {
+  padding-left: 3px;
+  padding-right: 3px;
+}

@@ -1,0 +1,117 @@
+<% cache true do -%>
+<% if not in_development? -%>
+# This is the real production system for the CII Best Practices badge.
+<%
+  locale_prefixes = I18n.available_locales.map { |loc| "/#{loc}" }
+  locale_prefixes_except_en = locale_prefixes.reject { |loc| loc == '/en' }
+  all_prefixes = locale_prefixes.prepend('') # ['', '/en', 'zh-CN', ...]
+-%>
+
+User-Agent: *
+#
+# Tell crawlers to skip public user data, to help maintain user privacy.
+# With these instructions, if users delete their accounts,
+# the user data will rapidly disappear elsewhere as well.
+# We don't use wildcards here, because some crawlers don't support wildcards;
+# instead we list every supported locale.
+<% all_prefixes.each do |prefix| %>
+Disallow: <%= prefix %>/users
+<% end %>
+#
+# We want people to have access to the JSON files, so we (now) allow
+# crawling the norm /en/projects.json and /en/projects/*.json files.
+# However, it's pointless to get them in different locales, so
+# only crawl one locale, namely English (en), and the "no locale" version.
+<% locale_prefixes_except_en.each do |prefix| %>
+Disallow: <%= prefix %>/projects*.json$
+<% end %>
+#
+# We *want* people to crawl [/LOC]/project_stats[.json]
+# but there's little value in crawling the per-day statistics in
+# [/LOC]/project_stats/[*.json].
+# All of that data is in the full downloadable dataset.
+# Let's save the site a lot of time by skipping those.
+<% all_prefixes.each do |prefix| %>
+Disallow: <%= prefix %>/project_stats/
+<% end %>
+#
+# Match with config/initialization
+#
+Disallow: /admin
+Disallow: /backup
+Disallow: /cgi
+Disallow: /command
+Disallow: /common
+Disallow: /config
+Disallow: /data
+Disallow: /dbadmin
+Disallow: /dump
+Disallow: /error_message
+Disallow: /install
+Disallow: /joomla
+Disallow: /muieblackcat
+Disallow: /myadmin
+Disallow: /mysql
+Disallow: /onvif
+Disallow: /options
+Disallow: /phpadmin
+Disallow: /phpmanager
+Disallow: /phpmyadmin
+Disallow: /phpMyAdmin
+Disallow: /PHPMYADMIN
+Disallow: /scripts
+Disallow: /setup
+Disallow: /sqladmin
+Disallow: /sql-admin
+Disallow: /submitticket
+Disallow: /temp
+Disallow: /upload
+Disallow: /w00tw00t
+Disallow: /webadmin
+Disallow: /wootwoot
+Disallow: /WootWoot
+Disallow: /WooTWooT
+Disallow: /wp-
+Disallow: /xmlrpc
+
+# Don't crawl /projects URLs with "&" or "%".
+# We get many attacks that use these characters, and in some cases
+# temporarily block sites that use them in ways that look like attacks.
+# There's no need to crawl them, and by saying "do not crawl them"
+# we protect web crawlers from accidentally looking like attackers.
+# Ideally we'd only prevent crawling if these were not part of the query,
+# but robots.txt doesn't have any way to do that.
+<% all_prefixes.each do |prefix| %>
+Disallow: <%= prefix %>/projects/*&
+Disallow: <%= prefix %>/projects/*%
+<% end %>
+
+# Don't crawl sorts or most queries.
+# They have the same data, and crawling all the variants will produce
+# slow crawl times.
+# Crawling via "status=", "page=", or "criteria_level=" is fine.
+Disallow: /*?*sort=
+Disallow: /*?*sort_direction=
+# This rule covers q=, pq=, lteq=, and gteq=:
+Disallow: /*?*q=
+#
+# Don't crawl JavaScript pagy pseudo-pages (real pages are fine to crawl)
+Disallow: *__pagy_page__
+#
+# Don't crawl "edit" pages. They require login, so attempting to crawl them
+# wastes everyone's time.  They should all end in "/edit", but
+# sometimes they end in "edit" instead - disallow them either way.
+<% all_prefixes.each do |prefix| %>
+Disallow: <%= prefix %>/projects/*edit$
+Disallow: <%= prefix %>/projects/*edit?
+<% end %>
+#
+# Add an "allow" just to be clear - it will have lower priority than
+# any longer rule.  In most cases we *do* want this site to be crawled:
+Allow: /
+<% else %>
+# This is not the real production system, do not crawl this data at all.
+User-Agent: *
+Disallow: /
+<% end -%>
+<% end -%>

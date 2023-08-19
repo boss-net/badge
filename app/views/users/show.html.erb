@@ -1,0 +1,73 @@
+<% require 'cgi' %>
+<div class="center">
+
+ <% provide(:title, @user.name) %>
+ <div class="row">
+   <aside class="col-md-12">
+     <section class="user_info">
+       <h3>
+         <%= avatar_for @user %>
+         <%= @user.name || @user.nickname %>
+         <% if current_user && (@user == current_user || current_user.admin?) %>
+           <%= link_to Icon[:'fa-edit'] + t('.edit_user'),
+                 edit_user_path(@user),
+                 class: 'btn btn-primary', rel: 'nofollow ugc' %>
+         <% end %>
+       </h3>
+     </section>
+   </aside>
+  <div class="col-md-12">
+
+  <% if @user.projects.any? %>
+    <br><br>
+    <h2><%= t '.projects_owned' %></h2>
+    <%= render 'projects/table', projects: @projects %>
+    <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+  <% end %>
+
+  <% if @projects_additional_rights.present? %>
+    <br>
+    <h2><%= t '.projects_additional_rights' %></h2>
+    <br>
+    <%= render 'projects/table', projects: @projects_additional_rights %>
+  <% end %>
+
+  <% if @edit_projects.present? %>
+    <br>
+    <h2><%= t '.other_projects_edit' %></h2>
+    <br>
+    <%= render 'projects/table', projects: @edit_projects %>
+  <% end %>
+
+  <br><br>
+  <p>
+  <% if @user.provider == 'github' && @user.nickname? %>
+   <a href="https://github.com/<%= @user.nickname %>"><%=
+   t('.see_external') %></a>
+  <% else %>
+   <%= t('.local_account') %>
+  <% end %>
+  <% if current_user && (@user == current_user || current_user.admin?) %>
+    <% if @user.encrypted_email?
+         user_email = @user.email_if_decryptable
+    %>
+      | <a href="mailto:<%= CGI::escape(user_email).html_safe %>"><%=
+        t('.send_email_to') %></a>
+    <% end %>
+    | <%= link_to Icon[:'fa-times-circle'] + t('.delete_link_name'),
+                  @user, method: :delete,
+                  data: { confirm: t('.confirm_delete') },
+                  rel: 'nofollow ugc' %>
+    | <a href="<%= user_path(@user, format: :json) %>"
+       title="<%= t '.in_json_format' %>"><%= t '.json_link' %></a>
+  <% end %>
+  <% if current_user&.admin? %>
+    <% if @user.admin? %>
+      <p><%= t '.is_admin' %></p>
+    <% end %>
+  <% end %>
+  <a class="hidden" href="/<%= I18n.locale
+    %>/admin">Admin link (do not use unless authorized)</a>
+ </div>
+</div>
+</div>

@@ -1,0 +1,123 @@
+<%= javascript_include_tag 'project-stats' %>
+
+<%
+  # Cache the page. This is a relatively small page and does not
+  # embed data (that is sent separately in JSON format),
+  # so it's not expensive to create. That said, caching it produces
+  # results even more quickly.
+  cache ['project_stats', locale, @is_normal] do
+%>
+
+<p id="notice"><%= notice %></p>
+
+<% if @is_normal %>
+
+<h1><%= t('.project_stats_header') %></h1>
+
+<h2><%= t '.all_projects' %></h2>
+
+<%=
+  # Show a chart with just total # projects.
+  # This gets its own chart because its scale hides everything else.
+  # This causes loading the JSON data as a separate request.
+  # Doing it this way means that the page we send is smaller, and
+  # the JSON data can be easily cached by the CDN.
+  line_chart total_projects_project_stats_path(format: :json, locale: nil),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.projects_nontrivial' %></h2>
+<%=
+  # Done transforming data; display it.
+  line_chart nontrivial_projects_project_stats_path(format: :json, locale: nil),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.projects_activity_30' %></h2>
+<%=
+  line_chart activity_30_project_stats_path(format: :json),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<% else # show "non-normal" displays (less commonly used) %>
+
+<h2><%= t '.daily_activity' %></h2>
+<%=
+  line_chart daily_activity_project_stats_path(format: :json),
+    colors: ['green', 'darkgreen', 'blue', 'darkblue', 'red', 'purple'],
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br>
+<%= t '.projects_created_updated_daily' %>
+
+<br><br><br>
+
+<h2><%= t '.reminders' %></h2>
+<%=
+  line_chart reminders_project_stats_path(format: :json),
+    colors: ['green', 'blue'],
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+<br><br><br>
+
+<h2><%= t '.projects_silver' %></h2>
+<%=
+  line_chart silver_project_stats_path(format: :json, locale: nil),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.projects_gold' %></h2>
+<%=
+  line_chart gold_project_stats_path(format: :json, locale: nil),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.projects_completed_silver_and_gold' %></h2>
+<%=
+  line_chart silver_and_gold_project_stats_path(format: :json),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.percent_projects_earning_badges' %></h2>
+<%=
+  line_chart percent_earning_project_stats_path(format: :json),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<br><br><br>
+
+<h2><%= t '.user_statistics' %></h2>
+<%=
+  line_chart user_statistics_project_stats_path(format: :json),
+    library: ProjectStatsHelper::DATE_CHART_OPTIONS
+%>
+
+<%   end # uncommon %>
+<% end # cache %>
+
+<% if current_user&.admin? %>
+<%# This links to admin-only information: %>
+<p>
+<%= t '.admin_html' %>
+<% end # admin-specific info %>
+
+<br>
+<br>
+<%= t '.raw_data' %>
+<ul>
+<li><%=
+  link_to t('.json_format'), project_stats_path(format: :json, locale: nil) %>
+<li><%=
+  link_to t('.csv_format'), project_stats_path(format: :csv, locale: nil) %>.
+</ul>

@@ -1,0 +1,9 @@
+<%= t 'report_mailer.reminder_body_html',
+      project_name: @project.name,
+      project_info_url: @project_info_url,
+      project_updated_at: @project.updated_at,
+      project_badge_percentage_0: @project.badge_percentage_0 %>
+
+<p>
+<%= t 'report_mailer.ending' %>
+</p>

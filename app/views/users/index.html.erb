@@ -1,0 +1,25 @@
+<% require 'cgi' %>
+
+<div class="jumbotron">
+<h2 class>All users</h2>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= avatar_for user %>
+      <%= link_to user.name, user %>
+    | <%= user.provider %>
+      <% if current_user&.admin? %>
+        <% if user.email? %>
+    |     <a href="mailto:<%= CGI::escape(user.email).html_safe %>">email
+            <%= user.email %></a>
+        <% end %>
+    |   <%= link_to "delete", user, method: :delete,
+                                    data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+
+</div>

@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.fastly.com/service//purge/foo
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Fastly-Key:
+      - ''
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '68'
+      Server:
+      - Varnish
+      Retry-After:
+      - '0'
+      Content-Type:
+      - application/json
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 11 Apr 2023 05:22:16 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-ewr18123-EWR
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=31536000
+    body:
+      encoding: UTF-8
+      string: '{"msg":"Record not found", "detail": "Cannot find service ''(null)''"}'
+  recorded_at: Tue, 11 Apr 2023 05:22:16 GMT
+recorded_with: VCR 6.1.0

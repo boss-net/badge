@@ -1,0 +1,53 @@
+<%
+  badge_status_options = [
+    [t('.all'), nil],
+    [t('.in_progress_variable', percent: 25), 25],
+    [t('.in_progress_variable', percent: 50), 50],
+    [t('.in_progress_variable', percent: 75), 75],
+    [t('.in_progress_variable', percent: 90), 90],
+    [t('.passing_100'), 100],
+    [t('.silver_in_progress_variable', percent: 125), 125],
+    [t('.silver_in_progress_variable', percent: 150), 150],
+    [t('.silver_in_progress_variable', percent: 175), 175],
+    [t('.silver_in_progress_variable', percent: 190), 190],
+    [t('.silver_200'), 200],
+    [t('.gold_in_progress_variable', percent: 225), 225],
+    [t('.gold_in_progress_variable', percent: 250), 250],
+    [t('.gold_in_progress_variable', percent: 275), 275],
+    [t('.gold_in_progress_variable', percent: 290), 290],
+    [t('.gold_300'), 300],
+  ]
+%>
+<% provide :nav_extras do %>
+  <li>
+    <% if logged_in? %>
+      <%= link_to Icon[:'fa-plus'] + t('.add_link'), new_project_path %>
+    <% end %>
+  </li>
+<% end %>
+
+<div class="center">
+<h2><%= t 'projects_count', count: @count %></h2>
+  <%= form_for projects_path, method: 'get', enforce_utf8: false,
+               html: { class: 'project_search' } do %>
+    <label for="gteq"><%= t '.badge_status' %></label>
+    <%= select_tag(:gteq, options_for_select(badge_status_options,
+                   params[:gteq]), class: 'onchange-submit') %>
+    &nbsp; &nbsp; &nbsp;
+    <label for="lteq"><%= t '.exclude_passing' %></label>
+    <%= check_box_tag :lteq, '99', params[:lteq], class: 'onchange-submit' %>
+    &nbsp; &nbsp; &nbsp;
+    <label for="q"><%= t '.text_search' %></label>
+    <%= text_field_tag :q, params[:q], size: 25,
+                       placeholder: t('.name_or_description') %>
+    <%= submit_tag t('.text_search'), name: nil %>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <%= link_to image_tag('feed-icon-28x28.png', width: '28', height: '28'), feed_path %>
+  <% end %>
+<br>
+<%= link_to t('.add_new'), new_project_path, class: 'btn btn-success' %>
+<br>
+<br>
+  <%= render 'table', projects: @projects, locale: locale %>
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+</div>
