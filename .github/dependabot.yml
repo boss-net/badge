@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # Bundler is the usual external package manager for Ruby programs.
+  # Packaged Ruby libraries are called "gems".
+  # Bundler tracks gem inter-dependencies and loads gems from external sites
+  # (typically from the Rubygems site),
+  # Bundler uses the Ruby program 'gem' to install gems locally.
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # Do not "update" vcr. Later versions switched to a non-OSS licnese.
+      # This dependency is *only* used during testing,
+      # so any unintentional vulnerabilities in it don't matter.
+      - dependency-name: "vcr"
+  # Keep our GitHub actions up to date.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Every weekday
+      interval: "daily"
