@@ -1,0 +1,5 @@
+[![OpenSSF Best Practices](https://bestpractices.boss-net.org/projects/1/badge)](https://bestpractices.boss-net.org/projects/1)
+[![CircleCI Build Status](https://circleci.com/gh/boss-net/badge.svg?&style=shield)](https://app.circleci.com/pipelines/github/boss-net/badge)
+[![codecov](https://codecov.io/gh/boss-net/badge/branch/master/graph/badge.svg)](https://codecov.io/gh/boss-net/badge)
+[![License](https://img.shields.io/:license-mit-blue.svg)](https://badges.mit-license.org)
+[![openssf scorecards](https://api.securityscorecards.dev/projects/github.com/boss-net/badge/badge)](https://api.securityscorecards.dev/projects/github.com/boss-net/badge)
