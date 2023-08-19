@@ -1,0 +1,435 @@
+#!/bin/sh
+echo 'install-badge-dev-env: Auto-install development environment for BadgeApp.'
+echo 'See INSTALL.md for more information.'
+echo
+echo 'Make sure your system is up-to-date before running this!'
+
+# Set configure options defaults; set their values with environment variables.
+if [ "$(uname)" != 'Darwin' ] ; then  # NOT MacOS
+  : "${MYINSTALL_SYSTEM_INSTALL_PREFIX:=sudo}"
+else
+  : "${MYINSTALL_SYSTEM_INSTALL_PREFIX:= }"
+fi
+: "${MYINSTALL_SYSTEM_INSTALL_PACKAGES:=yes}"
+: "${MYINSTALL_RBENV:=yes}" # Should we install and use rbenv?
+: "${MYINSTALL_RBENV_BUNDLER:=yes}" # Should we install and use rbenv-bundler?
+
+if [ "$MYINSTALL_RBENV_BUNDLER" = yes ] &&
+   [ "$MYINSTALL_RBENV" = no ] ; then
+  echo "Error: rbenv-bundler requires rbenv."
+  exit 1
+fi
+
+# If you modify this script, please check it with the "shellcheck"
+# shell static analysis tool.
+# The following enables some run-time error detection:
+set -e
+
+
+######################################################################
+# Define globals and functions.
+######################################################################
+
+# This is the running list of system packages to install.
+PACKAGES=''
+
+# Add list of packages to the PACKAGES list. Rename packages as needed
+add_pkg () {
+  for p ; do
+    if [ "$p" = '' ] || [ "$p" = '-' ] ; then continue ; fi
+    if [ "$p" = 'sqlite3' ] && { [ "$manager" = 'dnf' ] || [ "$manager" = 'yum' ]; }; then
+      p='sqlite'
+    fi
+    PACKAGES="$PACKAGES $p"
+  done
+}
+
+# Return true iff $1 is a command
+is_command () {
+  command -v "$1" > /dev/null
+}
+
+# Given a list of commands, return the first one that exists (if any)
+find_command () {
+  for f ; do
+    if is_command "$f" ; then
+      echo "$f"
+      true
+      return
+    fi
+  done
+  # None found, return something useful.
+  echo UNKNOWN
+  false
+}
+
+# Given the path to the user's shell init file, adds a path concatenation of
+# the second and third parameters to it. Expects three parameters:
+#
+# $1 is the shell init file
+# $2 is base part of path /home... without trailing slash
+# $3 is unique end part of path
+#
+# returns true (0) if shell init file exists and PATH was appended to, false
+#         (1) otherwise
+add_to_path () {
+  if [ -e "$1" ] ; then
+    # shellcheck disable=SC2039
+    local pattern
+    pattern="PATH=.*"$(echo "$3" | sed -e "s/\./\\\./g")
+    if ! grep "$pattern" "$1" > /dev/null ; then
+      echo "Modifying $1 to add $3 to path. NOTE: Use this command:"
+      echo "  . $1"
+      echo "for the environment changes to take effect in current shell."
+      # shellcheck disable=SC2016
+      echo "export PATH=$2/$3:"'$PATH' >> "$1"
+      true
+      return
+    fi
+  fi
+  false
+  return
+}
+
+can_build_ruby () {
+  rbenv install -l | grep -q "^ *${ruby_version}\$"
+}
+
+######################################################################
+# Main line.
+######################################################################
+
+if ! [ -f 'install-badge-dev-env' ] ; then
+  echo 'Must run at top level.' >&2
+  exit 1
+fi
+
+# First, figure out what package manager to use.
+echo
+echo 'STAGE 1: Determine the package manager to use.'
+
+if [ "$(uname)" = 'Darwin' ] ; then  # MacOS.  Use 'brew'.
+  manager='brew'
+  if ! is_command brew ; then
+    echo 'Downloading and installing brew.'
+    brew_url='https://raw.githubusercontent.com/Homebrew/install/master/install'
+    ruby -e "$(curl -fsSL $brew_url)"
+    brew tap homebrew/cask
+  fi
+else
+  # apt-get : Debian, Ubuntu
+  # dnf : some Fedora
+  # yum : Red Hat Enterprise Linux, CentOS, some Fedora
+  # zypper : SuSE
+  # emerge : Gentoo
+  # pkg : *BSDs.  We're not dealing with ports vs. packages; patches welcome.
+  # urpmi : Mageia/Mandriva
+  # pacman : Manjaro/Arch Linux
+  manager=$(find_command apt-get dnf yum zypper emerge pkg urpmi pacman)
+  if [ "$manager" = 'UNKNOWN' ] ; then
+    echo 'Could not find a system package manager.'
+    exit 1
+  fi
+fi
+
+case "$manager" in
+  urpmi)  installer="$manager" ;;
+  pacman) installer="$manager -S base-devel" ;;
+  *)      installer="$manager install" ;;
+esac
+echo "Will use the installer command '$installer'"
+
+# Now start adding packages.
+echo
+echo 'STAGE 2: Identifying and install system packages'
+
+# git should already be installed, but we'll make sure of it.
+is_command git || add_pkg git
+
+# Install a bootstrap version of Ruby, if we don't already have one.
+# We'll actually install a specific version later, but this will help us
+# bootstrap the installation and building of that version.
+is_command ruby || add_pkg ruby
+
+
+# We will build ruby via rbenv and ruby-build. This requires either those
+# packages themselves, or a number of other packages to build them.
+# Here are the recommended packages per the ruby-build
+# instructions at <https://github.com/sstephenson/ruby-build/wiki>.
+case "$manager" in
+  brew)
+    # We'll use the brew version. Install these to rebuild rbenv:
+    # add_pkg openssl libyaml libffi
+    add_pkg rbenv ruby-build graphviz postgres cmake
+    brew cask install phantomjs ;;
+
+  apt-get)
+    # We'll use the system version.  If you want to use the latest one
+    # on GitHub, instead install these system components first:
+    # add_pkg autoconf bison build-essential libssl-dev libyaml-dev \
+    #         libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev \
+    #         libgdbm3 libgdbm-dev
+    add_pkg autoconf bison build-essential libssl-dev libyaml-dev \
+            libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev \
+            libgdbm-dev postgresql-server-dev-all postgresql \
+            postgresql-contrib cmake nodejs phantomjs graphviz \
+            pkg-config;;
+  yum|dnf)
+    add_pkg gcc openssl-devel libyaml-devel libffi-devel readline-devel \
+            zlib-devel gdbm-devel ncurses-devel postgresql-devel cmake npm \
+            postgresql-server postgresql-contrib graphviz ;;
+  zypper)
+    add_pkg gcc automake gdbm-devel libffi-devel libyaml-devel \
+            openssl-devel ncurses-devel readline-devel zlib-devel ;;
+  pacman)
+     add_pkg libffi libyaml openssl zlib graphviz ;;
+  *)
+     # We'll guess some packages needed.
+     add_pkg gcc openssl zlib
+     echo 'Warning:  You may need additional packages to rebuild ruby.' >&2 ;;
+esac
+
+
+if [ "$MYINSTALL_SYSTEM_INSTALL_PACKAGES" = 'yes' ] ; then
+  echo 'About to install system packages with the command:'
+  echo "  ${MYINSTALL_SYSTEM_INSTALL_PREFIX} $installer $PACKAGES"
+  # shellcheck disable=SC2086
+  $MYINSTALL_SYSTEM_INSTALL_PREFIX $installer $PACKAGES
+else
+  echo 'Skipping system package install.'
+fi
+
+shell_init=''
+for try in .bashrc .bash_profile .zshrc .profile ; do
+  if [ -f "$HOME/$try" ] ; then
+    shell_init="$HOME/$try"
+    break
+  fi
+done
+
+case "$manager" in
+  brew)
+    brew services start postgres
+    ;;
+  yum|dnf)
+    npm install phantomjs-prebuilt
+    npm_path="node_modules/.bin"
+    PATH="$(pwd)/$npm_path:$PATH"
+    export PATH
+    add_to_path "$shell_init" "$(pwd)" "$npm_path"
+    sudo postgresql-setup initdb
+    sudo systemctl enable postgresql
+    sudo systemctl start postgresql
+    ;;
+  *)
+    : # do nothing
+esac
+
+# Install rbenv 1.0.0 via GitHub, if it isn't already installed,
+# to let us select a specific version of ruby.
+echo
+echo 'STAGE 3: Install and setup rbenv and ruby-build'
+
+# Remarkably, older versions of git didn't check retrieved objects.
+# Always check.  Technically we only need to set this for 'transfer',
+# because fetch defaults to whatever transfer does, but let's force it.
+# Receive also defaults to what 'transfer' does, but it's unlikely to have
+# something different.
+# This is per a recommendation about git integrity by Eric Myhre.
+# We do this here, *before* we might use git to retrieve something.
+echo 'Forcing git to check retrieved objects'
+git config --global transfer.fsckobjects true
+git config --global fetch.fsckobjects true
+
+
+if is_command 'rvm' ; then
+  echo 'WARNING: rvm installed, may be incompatible with rbenv.' >&2
+fi
+
+DO_LOCAL_RBENV='no'
+if is_command 'rbenv' ; then
+  echo 'rbenv already installed.'
+  if ! rbenv --version | grep "1\..\.." > /dev/null 2>&1 ; then
+    echo '  Installed rbenv version != 1.x.x'
+    DO_LOCAL_RBENV='yes'
+  fi
+  # CircleCI has an environment which cause our tests to fail
+  # so force manual install of rbenv on CircleCI.
+  if [ -n "$CIRCLECI" ]; then
+    DO_LOCAL_RBENV='yes'
+    echo ' On CircleCI manually installing rbenv'
+  fi
+else
+  DO_LOCAL_RBENV='yes'
+  if [ "$MYINSTALL_RBENV" != 'yes' ] ; then
+    echo 'Skipping rbenv install.'
+  fi
+fi
+
+if [ "$DO_LOCAL_RBENV" = 'yes' ] ; then
+  echo 'Downloading and installing rbenv from GitHub' >&2
+  if ! [ -d ~/.rbenv ] ; then
+    git clone git://github.com/rbenv/rbenv.git ~/.rbenv
+  fi
+  # Following performed in subshell so as not to change working directory.
+  (
+  cd ~/.rbenv
+  git fetch
+  git checkout a3fa9b73b8e6907845bdf47d2c2924c187580bdc
+  )
+fi
+
+if [ "$DO_LOCAL_RBENV" = 'yes' ] ; then
+  # ensure rbenv is on the PATH when running the rest of this script.
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  # shellcheck disable=SC2016
+  if add_to_path "$shell_init" "$HOME" '.rbenv/bin' ; then
+    # shellcheck disable=SC2016
+    echo 'eval "$(rbenv init -)"' >> "$shell_init"
+  fi
+  if [ ! -e "$shell_init" ] ; then
+    echo 'Warning: rbenv PATH is not set up.' >&2
+  fi
+fi
+
+# Install rbenv-bundler.
+# This makes "bundle ..." use rbenv's version of Ruby, so we don't need
+# to prefix commands with "bin/..." or "bundle exec ...":
+if [ "${MYINSTALL_RBENV_BUNDLER}" = 'yes' ] && \
+   ! [ -e "$HOME/.rbenv/plugins/bundler" ] ; then
+  echo 'Downloading and installing rbenv-bundler from GitHub' >&2
+  mkdir -p "$HOME/.rbenv/plugins/"
+  git clone git://github.com/carsomyr/rbenv-bundler.git \
+            "$HOME/.rbenv/plugins/bundler"
+fi
+
+# Force install Gemfile ruby version using rbenv. This may cause a compile.
+echo
+echo 'STAGE 4: For this project, force install fixed version of ruby'
+
+if [ "$MYINSTALL_RBENV" = 'yes' ] && is_command rbenv ; then
+  # Get ruby version from Gemfile.
+  ruby_version=$(cat .ruby-version)
+  if [ "$(uname)" != 'Darwin' ] && ! can_build_ruby; then
+    echo 'Updating ruby-build with GitHub version.'
+    git clone https://github.com/rbenv/ruby-build.git \
+        "$HOME/.rbenv/plugins/ruby-build"
+  else
+    echo 'ruby-build up to date.'
+  fi
+  echo "Using rbenv to locally install ruby version ${ruby_version}"
+  rbenv install --skip-existing "$ruby_version"
+  rbenv local "$ruby_version" # In this directory AND BELOW, use this version.
+  eval "$(rbenv init -)"
+else
+  echo 'Skipped installing fixed version of ruby - no rbenv'
+fi
+
+echo
+echo 'STAGE 5: Install gems (including bundler and Rails)'
+
+gem sources --add https://rubygems.org  # Ensure you're getting gems here
+gem update --system
+# Tell rbenv about that
+if is_command rbenv ; then
+  rbenv rehash
+fi
+gem install bundler  # Install the "bundler" gem package manager.
+# If we're using rbenv, ensure it can find "bundle" and friends.
+if is_command rbenv ; then
+  rbenv rehash
+fi
+bundle install       # Install gems we use in Gemfile.lock, including Rails
+
+# "bundle" installs additional commands - ensure we can find them,
+# by rehashing if we're using rbenv.
+# This is especially important because it appears that the
+# asset compilation process needs some commands to work and it doesn't
+# always report unexpected failures.  Without this, later JavaScript
+# may mysteriously fail because the assets aren't quite correct.
+if is_command rbenv ; then
+  rbenv rehash
+fi
+
+echo
+echo 'STAGE 6: Set up database for development if necessary'
+echo 'Make sure PostgreSQL superuser role for current user exists.'
+if ! sudo -u postgres createuser -s "$(whoami)"
+then
+  echo "Warning: Did not create user $(whoami)"
+fi
+
+# Is the database already set up?
+db_present=unknown
+if psql -d development -c "\dt" | grep schema_migrations >/dev/null 2>&1
+then
+  db_present=true
+else
+  db_present=false
+fi
+
+case "$db_present" in
+false)
+  echo 'Database not present. Running "rake db:setup" to seed with dummy data'
+  rake db:setup ;;
+true)
+  echo 'Skipping "rake db:setup" - the database appears to be present' ;;
+*)
+  echo 'UNEXPECTED RESULT from checking if database is set up' >&2
+  echo " $db_present" >&2 ;;
+esac
+
+echo
+echo 'STAGE 7: Minor git setups.'
+
+if ! git remote | grep -q '^upstream$' ; then
+  echo 'Adding git remote "upstream"'
+  git remote add upstream \
+      https://github.com/boss-net/badge.git
+fi
+
+if ! git config user.name > /dev/null ; then
+  echo 'What is your human-readable name (Example: David A. Wheeler)?'
+  # Ensures CircleCI doesn't get stuck
+  if [ -z "$CIRCLECI" ]; then
+    read -r name
+  else
+    name="circleci"
+  fi
+  git config --global user.name "$name"
+  echo 'You may change it with: git config --global user.name "YOUR NAME"'
+fi
+
+if ! git config user.name > /dev/null ; then
+  echo 'What is your email address?'
+  # Ensures CircleCI doesn't get stuck
+  if [ -z "$CIRCLECI" ]; then
+    read -r email
+  else
+    email="circleci@circleci.com"
+  fi
+  git config --global user.email "$email"
+  echo 'You may change it with: git config --global user.email "EMAIL ADDRESS"'
+fi
+
+
+echo
+echo 'FINAL STAGE: Test to see if it is working'
+
+# We don't want to force everyone do this, but a check on install
+# if the tools already happen to be available seems reasonable.
+if is_command shellcheck ; then
+  echo 'Statically checking this install command'
+  shellcheck install-badge-dev-env
+fi
+
+# On initial setup the test in feed_test.rb will fail with an
+# ActiveRecord::EnvironmentMismatchError
+# Running db:migrate in the test environment fixes the error.
+bin/rake db:migrate RAILS_ENV=test
+
+echo 'All done! Please reopen your terminal or run'
+echo '"source ~/.bashrc" to adjust your PATH.'
+echo 'Then run "rake" to check the install.'
+echo 'Run "rails server" and use a web browser'
+echo 'to view localhost:3000 to see it run.'
