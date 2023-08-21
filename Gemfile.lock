@@ -78,8 +78,8 @@ GEM
     awesome_print (1.9.2)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    blind_index (2.3.2)
-      activesupport (>= 5.2)
+    blind_index (2.4.0)
+      activesupport (>= 6.1)
       argon2-kdf (>= 0.1.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -503,7 +503,7 @@ DEPENDENCIES
   attr_encrypted (~> 4)
   awesome_print
   bcrypt (~> 3.1.18)
-  blind_index (~> 2.3.0)
+  blind_index (~> 2.4.0)
   bootsnap
   bootstrap-sass (~> 3.4)
   bootstrap-social-rails (~> 4.12)
